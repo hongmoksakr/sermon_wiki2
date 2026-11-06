@@ -1,0 +1,2629 @@
+<!DOCTYPE html>
+<html lang="ko" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <title>홍동우 목사의 설교 저장소 — 신학 및 설교 아카이브</title>
+  
+  <!-- Pretendard & Noto Serif KR Fonts -->
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Noto+Serif+KR:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif KR"', 'Georgia', 'serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            mint: {
+              50: '#f0fdfa',
+              100: '#ccfbf1',
+              400: '#2dd4bf',
+              500: '#14b8a6',
+              600: '#0d9488',
+            },
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              900: '#312e81',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Marked.js for Markdown Parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <!-- Mermaid.js for Diagrams -->
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+
+  <!-- 동일한 폴더에 위치한 data.js 로드 -->
+  <script src="./data.js"></script>
+
+  <style>
+    :root {
+      --doc-font-size: 17px;
+      --doc-line-height: 1.85;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(148, 163, 184, 0.25);
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(148, 163, 184, 0.45);
+    }
+
+    /* Mintlify / GitBook Inspired Subtle Background Grid */
+    .bg-grid-pattern {
+      background-size: 32px 32px;
+      background-image: 
+        linear-gradient(to right, rgba(148, 163, 184, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(148, 163, 184, 0.05) 1px, transparent 1px);
+    }
+
+    /* Document Content Styling */
+    #doc-body {
+      font-size: var(--doc-font-size);
+      line-height: var(--doc-line-height);
+      letter-spacing: -0.015em;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+    }
+    #doc-body.font-serif-mode {
+      font-family: 'Noto Serif KR', Georgia, serif;
+    }
+    #doc-body.font-sans-mode {
+      font-family: 'Pretendard', -apple-system, sans-serif;
+    }
+
+    #doc-body h1 {
+      font-size: 1.85em;
+      font-weight: 800;
+      line-height: 1.3;
+      margin-top: 1.5rem;
+      margin-bottom: 1.25rem;
+      letter-spacing: -0.025em;
+      display: none; /* 상단 Hero 헤더에 이미 표시하므로 본문 첫 H1은 숨김 */
+    }
+    #doc-body h2 {
+      font-size: 1.4em;
+      font-weight: 700;
+      line-height: 1.35;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      scroll-margin-top: 5rem;
+    }
+    #doc-body h3 {
+      font-size: 1.18em;
+      font-weight: 700;
+      line-height: 1.4;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      scroll-margin-top: 5rem;
+    }
+    #doc-body h4 {
+      font-size: 1.05em;
+      font-weight: 600;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      scroll-margin-top: 5rem;
+    }
+    #doc-body p {
+      margin-bottom: 1.35em;
+    }
+    #doc-body ul, #doc-body ol {
+      margin-bottom: 1.35em;
+      padding-left: 1.5em;
+    }
+    #doc-body ul { list-style-type: disc; }
+    #doc-body ol { list-style-type: decimal; }
+    #doc-body li {
+      margin-bottom: 0.4em;
+    }
+    #doc-body li > ul, #doc-body li > ol {
+      margin-top: 0.4em;
+      margin-bottom: 0.4em;
+    }
+    #doc-body hr {
+      margin: 2.5rem 0;
+      border: 0;
+      border-top: 1px solid rgba(148, 163, 184, 0.2);
+    }
+    #doc-body blockquote {
+      margin: 1.5rem 0;
+      padding: 1rem 1.25rem;
+      border-left: 4px solid #6366f1;
+      background: rgba(99, 102, 241, 0.05);
+      border-radius: 0 0.75rem 0.75rem 0;
+    }
+    .dark #doc-body blockquote {
+      background: rgba(99, 102, 241, 0.08);
+      border-left-color: #818cf8;
+    }
+    #doc-body blockquote p:last-child {
+      margin-bottom: 0;
+    }
+    #doc-body strong {
+      font-weight: 700;
+      color: inherit;
+    }
+    .dark #doc-body strong {
+      color: #f8fafc;
+    }
+    #doc-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.75rem 0;
+      font-size: 0.92em;
+      overflow-x: auto;
+      display: block;
+    }
+    @media (min-width: 768px) {
+      #doc-body table { display: table; }
+    }
+    #doc-body th, #doc-body td {
+      padding: 0.75rem 1rem;
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      text-align: left;
+    }
+    #doc-body th {
+      background: rgba(148, 163, 184, 0.08);
+      font-weight: 600;
+    }
+    #doc-body pre {
+      background: #0f172a;
+      color: #e2e8f0;
+      padding: 1.25rem;
+      border-radius: 0.75rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+      font-size: 0.88em;
+      font-family: 'JetBrains Mono', monospace;
+      border: 1px solid rgba(148, 163, 184, 0.15);
+    }
+    #doc-body code:not(pre code) {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85em;
+      padding: 0.15em 0.4em;
+      border-radius: 0.375rem;
+      background: rgba(99, 102, 241, 0.1);
+      color: #4f46e5;
+    }
+    .dark #doc-body code:not(pre code) {
+      background: rgba(129, 140, 248, 0.15);
+      color: #a5b4fc;
+    }
+
+    /* WikiLink Pill Styling */
+    .wikilink {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+      padding: 0.05rem 0.45rem;
+      margin: 0 0.05rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      color: #4f46e5;
+      background-color: rgba(99, 102, 241, 0.08);
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      text-decoration: none;
+      transition: all 0.15s ease;
+      cursor: pointer;
+    }
+    .wikilink:hover {
+      background-color: rgba(99, 102, 241, 0.18);
+      border-color: rgba(99, 102, 241, 0.4);
+      transform: translateY(-1px);
+    }
+    .dark .wikilink {
+      color: #a5b4fc;
+      background-color: rgba(99, 102, 241, 0.14);
+      border-color: rgba(129, 140, 248, 0.25);
+    }
+    .dark .wikilink:hover {
+      background-color: rgba(99, 102, 241, 0.25);
+      border-color: rgba(129, 140, 248, 0.5);
+    }
+    .wikilink-unresolved {
+      color: #64748b;
+      background-color: rgba(148, 163, 184, 0.1);
+      border: 1px dashed rgba(148, 163, 184, 0.35);
+      cursor: default;
+    }
+    .dark .wikilink-unresolved {
+      color: #94a3b8;
+    }
+
+    /* Callout Styling */
+    .callout-card {
+      margin: 1.5rem 0;
+      padding: 1.15rem 1.35rem;
+      border-radius: 0.85rem;
+      border: 1px solid;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Active TOC Link */
+    .toc-item.active {
+      color: #6366f1;
+      font-weight: 600;
+      border-left-color: #6366f1;
+    }
+    .dark .toc-item.active {
+      color: #818cf8;
+      border-left-color: #818cf8;
+    }
+
+    /* Mark Highlight */
+    mark.search-hl {
+      background: rgba(250, 204, 21, 0.35);
+      color: inherit;
+      padding: 0 2px;
+      border-radius: 3px;
+    }
+
+    /* Paywall / Restricted Article Blur Curtain */
+    .article-teaser-mask {
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);
+      -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);
+    }
+
+    /* 아티클 본문 안에 삽입되는 부분 열람 제한 영역 */
+    .article-inline-lock {
+      margin: 2.25rem 0;
+      padding: 1.75rem 1.25rem;
+      border: 1px solid rgba(244, 63, 94, 0.28);
+      border-radius: 1rem;
+      background: linear-gradient(145deg, rgba(244, 63, 94, 0.055), rgba(99, 102, 241, 0.045));
+      text-align: center;
+    }
+    .dark .article-inline-lock {
+      border-color: rgba(251, 113, 133, 0.25);
+      background: linear-gradient(145deg, rgba(244, 63, 94, 0.09), rgba(99, 102, 241, 0.07));
+    }
+    .article-inline-lock p:last-child { margin-bottom: 0; }
+  </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 dark:bg-[#0B0F17] dark:text-slate-200 antialiased selection:bg-brand-500 selection:text-white transition-colors duration-200 overflow-x-hidden">
+
+  <!-- Toast Notification -->
+  <div id="toast-notification" class="fixed bottom-6 right-6 z-50 hidden transform transition-all duration-300 translate-y-2 opacity-0">
+    <div class="flex items-center gap-2.5 px-4 py-3 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 shadow-xl border border-slate-700/50 dark:border-slate-200 text-xs font-semibold">
+      <i data-lucide="check-circle-2" class="w-4 h-4 text-mint-400 dark:text-mint-600 shrink-0"></i>
+      <span id="toast-message">복사되었습니다.</span>
+    </div>
+  </div>
+
+  <!-- Reading Progress Bar -->
+  <div class="fixed top-0 left-0 right-0 h-1 z-50 bg-transparent pointer-events-none">
+    <div id="reading-progress" class="h-full bg-gradient-to-r from-brand-500 via-mint-400 to-purple-500 w-0 transition-all duration-75 shadow-[0_0_10px_rgba(99,102,241,0.6)]"></div>
+  </div>
+
+  <!-- Top Navigation Header (Mintlify / GitBook Style) -->
+  <header class="sticky top-0 z-40 h-16 w-full backdrop-blur-xl bg-white/80 dark:bg-[#0B0F17]/80 border-b border-slate-200/80 dark:border-slate-800/80 transition-colors">
+    <div class="max-w-[1680px] mx-auto h-full px-4 lg:px-6 flex items-center justify-between gap-3">
+      
+      <!-- Left: Mobile Menu Button & Brand Logo -->
+      <div class="flex items-center gap-3 min-w-0">
+        <button id="mobile-menu-btn" onclick="toggleMobileSidebar()" class="lg:hidden p-2 -ml-1 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" aria-label="메뉴 열기">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+        
+        <a href="#home" onclick="navigateHome(event)" class="flex items-center gap-3 group min-w-0">
+          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform shrink-0">
+            <i data-lucide="book-marked" class="w-5 h-5"></i>
+          </div>
+          <div class="truncate">
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-base lg:text-lg tracking-tight text-slate-900 dark:text-white truncate">홍동우 목사의 설교 저장소</span>
+              <span class="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-brand-50 text-brand-600 dark:bg-brand-500/15 dark:text-brand-300 border border-brand-200/60 dark:border-brand-500/30">
+                2016–2026
+              </span>
+            </div>
+            <p class="hidden md:block text-[11px] text-slate-500 dark:text-slate-400 truncate">Theological &amp; Homiletical Knowledge Base</p>
+          </div>
+        </a>
+      </div>
+
+      <!-- Center: Global Search Trigger (Cmd/Ctrl + K) -->
+      <div class="flex-1 max-w-md mx-2 hidden sm:block">
+        <button onclick="openSearchModal()" class="w-full flex items-center justify-between px-3.5 py-2 rounded-xl text-sm text-slate-400 dark:text-slate-500 bg-slate-100/80 dark:bg-slate-800/60 hover:bg-slate-200/70 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-700/70 transition group">
+          <span class="flex items-center gap-2.5 truncate">
+            <i data-lucide="search" class="w-4 h-4 text-slate-400 group-hover:text-brand-500 transition-colors"></i>
+            <span class="truncate">설교, 성경 본문, 신학 개념, 신학자 검색...</span>
+          </span>
+          <kbd class="hidden md:inline-flex items-center gap-0.5 px-1.5 py-0.5 text-[11px] font-mono font-medium text-slate-500 dark:text-slate-400 bg-white dark:bg-slate-900 rounded border border-slate-200 dark:border-slate-700 shadow-sm shrink-0">
+            ⌘K
+          </kbd>
+        </button>
+      </div>
+
+      <!-- Right: Reading Controls & Theme Toggle -->
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <!-- Mobile Search Icon -->
+        <button onclick="openSearchModal()" class="sm:hidden p-2 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition" title="검색">
+          <i data-lucide="search" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Bookmarks Drawer Button -->
+        <button onclick="openLibraryModal('bookmarks')" class="relative p-2 sm:px-2.5 sm:py-1.5 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-800 transition flex items-center gap-1.5" title="북마크 및 최근 열람 기록">
+          <i data-lucide="bookmark" class="w-4 h-4 text-amber-500"></i>
+          <span class="hidden lg:inline">서재</span>
+          <span id="header-bookmark-count" class="px-1.5 py-0.2 rounded-full text-[10px] font-mono font-bold bg-amber-500/15 text-amber-600 dark:text-amber-400">0</span>
+        </button>
+
+        <!-- Random Explore Button -->
+        <button onclick="openRandomDoc()" class="hidden xl:inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-800 transition" title="무작위 문서 탐색">
+          <i data-lucide="dices" class="w-3.5 h-3.5 text-brand-500"></i>
+          <span>랜덤 탐색</span>
+        </button>
+
+        <!-- Font Family Toggle (Sans / Serif) -->
+        <button id="font-family-btn" onclick="toggleFontFamily()" class="px-2.5 py-1.5 rounded-lg text-xs font-medium text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-800 transition flex items-center gap-1" title="본문 서체 전환 (고딕 / 명조)">
+          <i data-lucide="type" class="w-3.5 h-3.5"></i>
+          <span id="font-family-label" class="hidden md:inline">고딕</span>
+        </button>
+
+        <!-- Font Size Controls -->
+        <div class="flex items-center bg-slate-100 dark:bg-slate-800/80 rounded-lg p-0.5 border border-slate-200/80 dark:border-slate-700/70">
+          <button onclick="changeFontSize(-1)" class="px-2 py-1 rounded-md text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 transition" title="글자 작게">
+            A-
+          </button>
+          <span id="font-size-indicator" class="px-1.5 text-[11px] font-mono text-slate-500 dark:text-slate-400 select-none hidden sm:inline">100%</span>
+          <button onclick="changeFontSize(1)" class="px-2 py-1 rounded-md text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-white dark:hover:bg-slate-700 transition" title="글자 크게">
+            A+
+          </button>
+        </div>
+
+        <!-- Dark / Light Mode Button -->
+        <button id="theme-toggle-btn" onclick="toggleTheme()" class="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/80 dark:border-slate-800 transition" aria-label="테마 전환" title="다크/라이트 모드 전환">
+          <i data-lucide="sun" id="theme-icon-light" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+          <i data-lucide="moon" id="theme-icon-dark" class="w-4 h-4 block dark:hidden text-slate-700"></i>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- Mobile Sidebar Backdrop -->
+  <div id="sidebar-backdrop" onclick="closeMobileSidebar()" class="fixed inset-0 z-40 bg-slate-950/60 backdrop-blur-sm hidden lg:hidden transition-opacity"></div>
+
+  <!-- Main 3-Column Layout Container -->
+  <div class="max-w-[1680px] mx-auto flex min-h-[calc(100vh-4rem)] relative">
+
+    <!-- ==========================================
+         LEFT SIDEBAR: DUAL SPLIT (TOP: RAW / BOTTOM: WIKI)
+         ========================================== -->
+    <aside id="left-sidebar" class="fixed lg:sticky top-16 left-0 z-40 w-[310px] xl:w-[330px] h-[calc(100vh-4rem)] bg-white dark:bg-[#0E131F] border-r border-slate-200/80 dark:border-slate-800/80 flex flex-col transform -translate-x-full lg:translate-x-0 transition-transform duration-300 ease-in-out shrink-0 select-none">
+      
+      <!-- Sidebar Filter Bar -->
+      <div class="p-2.5 border-b border-slate-200/70 dark:border-slate-800/80 bg-slate-50/50 dark:bg-slate-900/40 flex items-center gap-2">
+        <div class="relative flex-1">
+          <i data-lucide="filter" class="w-3.5 h-3.5 text-slate-400 absolute left-2.5 top-1/2 -translate-y-1/2"></i>
+          <input id="sidebar-filter-input" type="text" oninput="filterSidebarMenu(this.value)" placeholder="메뉴 빠른 필터..." class="w-full pl-8 pr-6 py-1.5 text-xs rounded-lg bg-white dark:bg-slate-800/90 border border-slate-200 dark:border-slate-700/80 text-slate-700 dark:text-slate-200 placeholder-slate-400 focus:outline-none focus:border-brand-500 transition" />
+          <button id="sidebar-filter-clear" onclick="clearSidebarFilter()" class="hidden absolute right-2 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+            <i data-lucide="x" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+        <button onclick="collapseAllTrees()" class="p-1.5 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 hover:bg-slate-200/50 dark:hover:bg-slate-800 transition" title="모든 폴더 접기">
+          <i data-lucide="ChevronsDownUp" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <!-- TOP HALF (50%): 01_RAW ARCHIVE MENU -->
+      <div class="h-1/2 flex flex-col border-b-2 border-slate-200 dark:border-slate-800 min-h-0">
+        <div class="px-3.5 py-2.5 bg-slate-100/70 dark:bg-slate-900/80 border-b border-slate-200/60 dark:border-slate-800/70 flex items-center justify-between shrink-0">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-amber-500 animate-pulse"></span>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">01. RAW 원본 아카이브</span>
+          </div>
+          <span id="raw-total-badge" class="px-2 py-0.5 text-[10px] font-mono font-semibold rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 border border-amber-500/20">0편</span>
+        </div>
+        <div id="raw-menu-container" class="flex-1 overflow-y-auto p-2 space-y-1">
+          <!-- 동적 트리 렌더링 영역 -->
+        </div>
+      </div>
+
+      <!-- BOTTOM HALF (50%): 02_WIKI KNOWLEDGE BASE MENU -->
+      <div class="h-1/2 flex flex-col min-h-0">
+        <div class="px-3.5 py-2.5 bg-slate-100/70 dark:bg-slate-900/80 border-b border-slate-200/60 dark:border-slate-800/70 flex items-center justify-between shrink-0">
+          <div class="flex items-center gap-2">
+            <span class="w-2 h-2 rounded-full bg-brand-500"></span>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-200">02. WIKI 신학 지식베이스</span>
+          </div>
+          <span id="wiki-total-badge" class="px-2 py-0.5 text-[10px] font-mono font-semibold rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20">0편</span>
+        </div>
+        <div id="wiki-menu-container" class="flex-1 overflow-y-auto p-2 space-y-1">
+          <!-- 동적 트리 렌더링 영역 -->
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- ==========================================
+         CENTER: MAIN CONTENT AREA
+         ========================================== -->
+    <main class="flex-1 min-w-0 px-4 sm:px-8 lg:px-12 py-8 max-w-4xl mx-auto">
+      
+      <!-- 1. DASHBOARD / HOME VIEW -->
+      <div id="home-view" class="space-y-10">
+        
+        <!-- Hero Banner -->
+        <div class="relative rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 bg-gradient-to-br from-white via-slate-50 to-indigo-50/40 dark:from-slate-900 dark:via-[#0F1626] dark:to-brand-900/20 p-6 sm:p-10 shadow-sm bg-grid-pattern">
+          <div class="relative z-10 max-w-2xl space-y-4">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-brand-500/10 text-brand-600 dark:text-brand-300 border border-brand-500/20">
+              <i data-lucide="flame" class="w-3.5 h-3.5"></i>
+              <span>신학 및 설교 아카이브 (2016–2026)</span>
+            </div>
+            <h1 class="text-2xl sm:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-white leading-tight">
+              홍동우 목사의 설교 저장소
+            </h1>
+            <p class="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+              지난 10년간의 강단 설교 원문(RAW)과 외부 매체 기고문, 그리고 이를 성서신학·조직신학·목회신학적으로 해부한 입체적 위키 지식베이스(WIKI)를 하나로 연결한 디지털 아카이브입니다.
+            </p>
+            <div class="pt-2 flex flex-wrap items-center gap-3">
+              <button onclick="openDoc('02_Wiki/synthesis/00_2016-2026_10년_사역계승_및_신학궤적_마스터보고서.md')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-brand-600 hover:bg-brand-500 text-white shadow-md shadow-brand-500/20 transition">
+                <i data-lucide="compass" class="w-4 h-4"></i>
+                <span>10년 신학 궤적 마스터 보고서</span>
+              </button>
+              <button onclick="openDoc('02_Wiki/synthesis/01_핵심_신학적_축_마스터분석.md')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition">
+                <i data-lucide="layers" class="w-4 h-4 text-mint-500"></i>
+                <span>6대 핵심 신학적 축 분석</span>
+              </button>
+              <button onclick="openDoc('02_Wiki/index.md')" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-white dark:bg-slate-800 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition">
+                <i data-lucide="list-tree" class="w-4 h-4 text-amber-500"></i>
+                <span>전체 마스터 카탈로그</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Statistics Grid -->
+        <div id="stats-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+          <!-- 동적 통계 카드 삽입 -->
+        </div>
+
+        <!-- 🎲 1. 오늘의 영감 조각 (Daily Inspiration & Random Discovery Widget) -->
+        <section class="relative rounded-2xl border border-brand-200/80 dark:border-brand-500/25 bg-gradient-to-r from-brand-50/60 via-white to-mint-50/40 dark:from-brand-950/30 dark:via-slate-900/80 dark:to-slate-900 p-5 sm:p-6 shadow-sm overflow-hidden">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4 pb-3 border-b border-slate-200/70 dark:border-slate-800/80">
+            <div class="flex items-center gap-2.5">
+              <span class="w-8 h-8 rounded-xl bg-brand-500/10 text-brand-600 dark:text-brand-400 flex items-center justify-center font-bold text-base">🎲</span>
+              <div>
+                <h2 class="text-base font-bold text-slate-900 dark:text-white flex items-center gap-2">
+                  <span>오늘의 영감 조각</span>
+                  <span class="text-[11px] font-mono font-semibold px-2 py-0.5 rounded-full bg-brand-500/10 text-brand-600 dark:text-brand-300">Serendipity</span>
+                </h2>
+                <p class="text-xs text-slate-500 dark:text-slate-400">설교 원문과 신학 개념 노트를 무작위로 추천받아 핵심 발췌문을 읽고 바로 이동합니다.</p>
+              </div>
+            </div>
+            <div class="flex items-center gap-2">
+              <button onclick="refreshInspirationWidget('all')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold bg-white dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 shadow-sm transition group">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-brand-500 group-hover:rotate-180 transition-transform duration-300"></i>
+                <span>다른 영감 뽑기</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="inspiration-cards-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- 동적 영감 조각 카드 2개 (설교 1 + 신학개념 1) -->
+          </div>
+        </section>
+
+        <!-- ⭐ 2. 북마크 & 최근 열람 기록 대시보드 바 -->
+        <section class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+          <!-- 즐겨찾기 북마크 -->
+          <div class="p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3 shadow-sm">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i data-lucide="star" class="w-4 h-4 text-amber-500 fill-amber-500"></i>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">내 북마크 보관함 (Bookmarks)</h3>
+              </div>
+              <span id="home-bookmark-badge" class="text-[11px] font-mono text-slate-400">0개 저장됨</span>
+            </div>
+            <div id="home-bookmarks-list" class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+              <!-- 북마크 리스트 -->
+            </div>
+          </div>
+
+          <!-- 최근 열람 기록 -->
+          <div class="p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-3 shadow-sm">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <i data-lucide="history" class="w-4 h-4 text-brand-500"></i>
+                <h3 class="text-sm font-bold text-slate-900 dark:text-white">최근 열람 기록 (Recent History)</h3>
+              </div>
+              <button onclick="clearRecentHistory()" class="text-[11px] text-slate-400 hover:text-rose-500 transition">기록 비우기</button>
+            </div>
+            <div id="home-recent-list" class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+              <!-- 최근 열람 리스트 -->
+            </div>
+          </div>
+        </section>
+
+        <!-- Synthesis Reports Section -->
+        <section class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="Orbit" class="w-5 h-5 text-brand-500"></i>
+              <h2 class="text-lg font-bold text-slate-900 dark:text-white">종합 신학 보고서 (Synthesis)</h2>
+            </div>
+            <span class="text-xs text-slate-500 dark:text-slate-400">10년 사역의 거시적 조망</span>
+          </div>
+          <div id="home-synthesis-grid" class="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+            <!-- 동적 카드 삽입 -->
+          </div>
+        </section>
+
+        <!-- 4 Periods Timeline Cards -->
+        <section class="space-y-4">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <i data-lucide="calendar-range" class="w-5 h-5 text-amber-500"></i>
+              <h2 class="text-lg font-bold text-slate-900 dark:text-white">4대 사역 시기별 설교 아카이브 (RAW)</h2>
+            </div>
+          </div>
+          <div id="home-periods-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- 동적 시기별 카드 삽입 -->
+          </div>
+        </section>
+
+        <!-- Featured Theological Concepts & Theologians -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <section class="p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold flex items-center gap-2 text-slate-900 dark:text-white">
+                <i data-lucide="lightbulb" class="w-4 h-4 text-mint-500"></i>
+                <span>주요 신학 개념 (Concepts)</span>
+              </h3>
+              <span id="concept-count-label" class="text-xs text-slate-400 font-mono"></span>
+            </div>
+            <div id="home-concepts-cloud" class="flex flex-wrap gap-1.5 max-h-60 overflow-y-auto pr-1">
+              <!-- 개념 태그 클라우드 -->
+            </div>
+          </section>
+
+          <section class="p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/50 space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-bold flex items-center gap-2 text-slate-900 dark:text-white">
+                <i data-lucide="users" class="w-4 h-4 text-purple-500"></i>
+                <span>대화하는 신학자 및 사상가 (Theologians)</span>
+              </h3>
+              <span id="theologian-count-label" class="text-xs text-slate-400 font-mono"></span>
+            </div>
+            <div id="home-theologians-cloud" class="flex flex-wrap gap-1.5 max-h-60 overflow-y-auto pr-1">
+              <!-- 신학자 클라우드 -->
+            </div>
+          </section>
+        </div>
+
+      </div>
+
+      <!-- 2. DOCUMENT READER VIEW -->
+      <article id="doc-view" class="hidden space-y-6">
+        
+        <!-- Top Breadcrumb & Counterpart Switcher Bar -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-200/80 dark:border-slate-800">
+          <nav id="doc-breadcrumbs" class="flex items-center flex-wrap gap-1.5 text-xs text-slate-500 dark:text-slate-400">
+            <!-- 브레드크럼 동적 생성 -->
+          </nav>
+
+          <div class="flex items-center flex-wrap gap-2">
+            <!-- 북마크 토글 버튼 -->
+            <button id="doc-bookmark-btn" onclick="toggleCurrentDocBookmark()" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-amber-500/60 transition shadow-sm">
+              <i data-lucide="star" id="doc-bookmark-icon" class="w-3.5 h-3.5 text-slate-400"></i>
+              <span id="doc-bookmark-label">북마크</span>
+            </button>
+
+            <div id="doc-counterpart-bar" class="flex items-center gap-2">
+              <!-- RAW <-> WIKI 1:1 전환 버튼 동적 삽입 -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Document Header & Metadata Card -->
+        <div class="space-y-4">
+          <div id="doc-badges" class="flex flex-wrap items-center gap-2">
+            <!-- 섹션/카테고리/일자/예상독서시간 뱃지 -->
+          </div>
+          
+          <h1 id="doc-title" class="text-2xl sm:text-3xl lg:text-[32px] font-extrabold tracking-tight text-slate-900 dark:text-white leading-[1.35]">
+            문서 제목
+          </h1>
+
+          <p id="doc-subject" class="hidden text-sm sm:text-base text-slate-600 dark:text-slate-300 bg-slate-100/80 dark:bg-slate-800/50 p-3.5 rounded-xl border-l-4 border-brand-500 font-medium leading-relaxed"></p>
+
+          <!-- Rich Metadata Grid (Scripture, Audience, Role, Theologians, Tags) -->
+          <div id="doc-meta-box" class="hidden rounded-2xl border border-slate-200/80 dark:border-slate-800/90 bg-white dark:bg-slate-900/60 p-4 shadow-sm">
+            <!-- 메타데이터 그리드 동적 삽입 -->
+          </div>
+        </div>
+
+        <!-- Main Markdown Body -->
+        <div id="doc-body" class="font-sans-mode pt-2 text-slate-800 dark:text-slate-200">
+          <!-- 파싱된 HTML 본문 -->
+        </div>
+
+        <!-- 🔒 유료 매체 기고문 저작권 보호 블러 커튼 & 안내 카드 (Articles 전용) -->
+        <div id="doc-paywall-curtain" class="hidden">
+          <!-- 동적 블러 페이드아웃 및 WIKI 안내 / 저자 잠금 해제 UI -->
+        </div>
+
+        <!-- Backlinks & Related Connections Section -->
+        <div id="doc-backlinks-section" class="hidden pt-8 mt-12 border-t border-slate-200 dark:border-slate-800 space-y-4">
+          <h3 class="text-sm font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-2">
+            <i data-lucide="network" class="w-4 h-4 text-brand-500"></i>
+            <span>연결된 문서 및 백링크 (Linked References)</span>
+          </h3>
+          <div id="doc-backlinks-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <!-- 백링크 카드 -->
+          </div>
+        </div>
+
+        <!-- Previous / Next Navigation Footer -->
+        <div id="doc-prev-next" class="pt-8 mt-8 border-t border-slate-200 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- 이전/다음 문서 카드 -->
+        </div>
+
+      </article>
+
+    </main>
+
+    <!-- ==========================================
+         RIGHT SIDEBAR: ON THIS PAGE (TOC) & INFO
+         ========================================== -->
+    <aside id="right-toc-sidebar" class="hidden xl:block w-[260px] shrink-0">
+      <div class="sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto pr-4 py-2 space-y-6">
+        
+        <!-- Reading Progress & Time Pill -->
+        <div id="right-reading-status" class="hidden p-3.5 rounded-2xl bg-white dark:bg-slate-900/70 border border-slate-200/80 dark:border-slate-800 space-y-2 shadow-sm">
+          <div class="flex items-center justify-between text-xs">
+            <span class="font-bold text-slate-700 dark:text-slate-200 flex items-center gap-1.5">
+              <i data-lucide="book-open-check" class="w-3.5 h-3.5 text-brand-500"></i>
+              <span>읽기 진행률</span>
+            </span>
+            <span id="right-progress-pct" class="font-mono font-bold text-brand-600 dark:text-brand-400">0%</span>
+          </div>
+          <div class="w-full h-1.5 bg-slate-100 dark:bg-slate-800 rounded-full overflow-hidden">
+            <div id="right-progress-bar" class="h-full bg-brand-500 w-0 transition-all duration-100"></div>
+          </div>
+          <div id="right-reading-time" class="text-[11px] text-slate-500 dark:text-slate-400 flex items-center justify-between pt-0.5">
+            <span>예상 독서 시간</span>
+            <span class="font-mono font-semibold text-slate-700 dark:text-slate-300">약 5분</span>
+          </div>
+        </div>
+
+        <!-- On This Page TOC -->
+        <div id="toc-wrapper" class="space-y-3 hidden">
+          <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-900 dark:text-slate-200">
+            <i data-lucide="align-left" class="w-3.5 h-3.5 text-brand-500"></i>
+            <span>실시간 목차 (TOC)</span>
+          </div>
+          <nav id="toc-list" class="space-y-1 border-l border-slate-200 dark:border-slate-800 text-xs">
+            <!-- 동적 목차 아이템 -->
+          </nav>
+        </div>
+
+        <!-- Quick Actions Card -->
+        <div class="p-4 rounded-2xl bg-slate-100/70 dark:bg-slate-900/60 border border-slate-200/70 dark:border-slate-800/80 space-y-3">
+          <div class="text-xs font-bold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
+            <i data-lucide="sliders" class="w-3.5 h-3.5 text-brand-500"></i>
+            <span>독서 도구</span>
+          </div>
+          <div class="grid grid-cols-2 gap-1.5">
+            <button onclick="window.scrollTo({top:0, behavior:'smooth'})" class="flex items-center justify-center gap-1 py-1.5 px-2 rounded-lg text-[11px] font-medium bg-white dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700 transition">
+              <i data-lucide="arrow-up" class="w-3 h-3"></i>
+              <span>맨 위로</span>
+            </button>
+            <button onclick="copyCurrentDocLink()" class="flex items-center justify-center gap-1 py-1.5 px-2 rounded-lg text-[11px] font-medium bg-white dark:bg-slate-800 hover:bg-brand-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700 transition">
+              <i data-lucide="share-2" class="w-3 h-3"></i>
+              <span id="copy-link-text">링크 복사</span>
+            </button>
+            <button onclick="openLibraryModal('bookmarks')" class="col-span-2 flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-[11px] font-medium bg-white dark:bg-slate-800 hover:bg-amber-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 border border-slate-200/70 dark:border-slate-700 transition">
+              <i data-lucide="bookmark" class="w-3 h-3 text-amber-500"></i>
+              <span>북마크 &amp; 열람 기록 열기</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </aside>
+
+  </div>
+
+  <!-- ==========================================
+       LIBRARY MODAL (BOOKMARKS & RECENT HISTORY)
+       ========================================== -->
+  <div id="library-modal" class="fixed inset-0 z-50 hidden flex items-start justify-center pt-16 sm:pt-24 px-4">
+    <div onclick="closeLibraryModal()" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity"></div>
+    <div class="relative z-10 w-full max-w-xl rounded-2xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-700/80 shadow-2xl overflow-hidden">
+      <div class="flex items-center justify-between px-5 py-4 border-b border-slate-200 dark:border-slate-800">
+        <div class="flex items-center gap-2">
+          <i data-lucide="bookmark" class="w-5 h-5 text-amber-500"></i>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white">내 서재 (북마크 및 최근 열람 기록)</h3>
+        </div>
+        <button onclick="closeLibraryModal()" class="p-1 rounded-lg text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+      <div class="px-5 py-2.5 bg-slate-50 dark:bg-slate-900/60 border-b border-slate-200/70 dark:border-slate-800 flex items-center gap-2 text-xs">
+        <button id="lib-tab-bookmarks" onclick="switchLibraryTab('bookmarks')" class="px-3 py-1.5 rounded-lg font-bold bg-brand-600 text-white transition">⭐ 북마크 보관함</button>
+        <button id="lib-tab-recent" onclick="switchLibraryTab('recent')" class="px-3 py-1.5 rounded-lg font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition">🕒 최근 열람한 문서</button>
+      </div>
+      <div id="library-modal-list" class="max-h-[55vh] overflow-y-auto p-4 space-y-2">
+        <!-- 동적 렌더링 -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       AUTHOR UNLOCK MODAL (FOR RESTRICTED ARTICLES)
+       ========================================== -->
+  <div id="author-unlock-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center px-4">
+    <div onclick="closeAuthorUnlockModal()" class="fixed inset-0 bg-slate-950/75 backdrop-blur-sm transition-opacity"></div>
+    <div class="relative z-10 w-full max-w-md rounded-2xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-700 p-6 shadow-2xl space-y-4">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center">
+            <i data-lucide="key-round" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white">저자 전용 원문 잠금 해제</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">유료 매체 기고 원고 열람 권한 인증</p>
+          </div>
+        </div>
+        <button onclick="closeAuthorUnlockModal()" class="text-slate-400 hover:text-slate-600 dark:hover:text-slate-200">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed bg-slate-50 dark:bg-slate-900/70 p-3.5 rounded-xl border border-slate-200/70 dark:border-slate-800">
+        이 문서는 유료 매체(복음과상황 등)에 기고된 원고로, 출판 저작권 정책을 준수하기 위해 방문자에게는 도입부 티저와 <strong>WIKI 신학 분석 노트</strong>만 공개됩니다. 저자 본인이시라면 인증 코드를 입력해 전체 원문을 열람하세요.
+      </p>
+
+      <div class="space-y-2">
+        <label class="block text-xs font-semibold text-slate-700 dark:text-slate-300">저자 인증 패스코드</label>
+        <input id="author-passcode-input" type="password" onkeydown="if(event.key==='Enter') confirmAuthorUnlock()" placeholder="인증 코드 입력 (데모: 0414 또는 author)" class="w-full px-3.5 py-2.5 rounded-xl text-sm bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-900 dark:text-white focus:outline-none focus:border-brand-500" />
+        <p id="author-unlock-error" class="hidden text-xs text-rose-500 font-medium">인증 코드가 일치하지 않습니다. (힌트: 0414 또는 author)</p>
+      </div>
+
+      <div class="flex items-center justify-end gap-2 pt-2">
+        <button onclick="closeAuthorUnlockModal()" class="px-4 py-2 rounded-xl text-xs font-semibold text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition">취소</button>
+        <button onclick="confirmAuthorUnlock()" class="px-4 py-2 rounded-xl text-xs font-bold bg-brand-600 hover:bg-brand-500 text-white shadow-md shadow-brand-500/20 transition flex items-center gap-1.5">
+          <i data-lucide="unlock" class="w-3.5 h-3.5"></i>
+          <span>잠금 해제</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       COMMAND PALETTE / SEARCH MODAL (Ctrl+K)
+       ========================================== -->
+  <div id="search-modal" class="fixed inset-0 z-50 hidden flex items-start justify-center pt-14 sm:pt-24 px-4">
+    <!-- Backdrop -->
+    <div onclick="closeSearchModal()" class="fixed inset-0 bg-slate-950/70 backdrop-blur-sm transition-opacity"></div>
+
+    <!-- Modal Window -->
+    <div class="relative z-10 w-full max-w-2xl rounded-2xl bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-700/80 shadow-2xl overflow-hidden">
+      
+      <!-- Search Input Bar -->
+      <div class="flex items-center px-4 py-3.5 border-b border-slate-200 dark:border-slate-800">
+        <i data-lucide="search" class="w-5 h-5 text-brand-500 mr-3 shrink-0"></i>
+        <input id="global-search-input" type="text" oninput="handleGlobalSearch(this.value)" placeholder="제목, 성경 본문(예: 로마서, 욥기), 신학 개념, 본문 키워드 검색..." class="w-full bg-transparent text-sm sm:text-base text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none" autocomplete="off" />
+        <button onclick="closeSearchModal()" class="ml-2 px-2 py-1 text-[11px] font-mono rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200">
+          ESC
+        </button>
+      </div>
+
+      <!-- Filter Tabs in Search -->
+      <div class="px-4 py-2 bg-slate-50 dark:bg-slate-900/60 border-b border-slate-200/70 dark:border-slate-800 flex items-center gap-1.5 text-xs overflow-x-auto">
+        <button onclick="setSearchFilter('all')" data-sfilter="all" class="search-tab-btn px-2.5 py-1 rounded-lg font-medium bg-brand-600 text-white">전체</button>
+        <button onclick="setSearchFilter('raw')" data-sfilter="raw" class="search-tab-btn px-2.5 py-1 rounded-lg font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800">📖 RAW 원본 (설교/기고문)</button>
+        <button onclick="setSearchFilter('wiki')" data-sfilter="wiki" class="search-tab-btn px-2.5 py-1 rounded-lg font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800">🧠 WIKI 지식베이스</button>
+        <button onclick="setSearchFilter('concepts')" data-sfilter="concepts" class="search-tab-btn px-2.5 py-1 rounded-lg font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800">💡 신학 개념</button>
+        <button onclick="setSearchFilter('theologians')" data-sfilter="theologians" class="search-tab-btn px-2.5 py-1 rounded-lg font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800">👤 신학자</button>
+      </div>
+
+      <!-- Search Results List -->
+      <div id="search-results-list" class="max-h-[60vh] overflow-y-auto p-2 divide-y divide-slate-100 dark:divide-slate-800/60">
+        <!-- 검색 결과 아이템 -->
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="px-4 py-2.5 bg-slate-50 dark:bg-slate-900/90 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-400">
+        <div class="flex items-center gap-3">
+          <span><kbd class="px-1.5 py-0.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">↑↓</kbd> 이동</span>
+          <span><kbd class="px-1.5 py-0.5 rounded bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700">Enter</kbd> 열기</span>
+        </div>
+        <span id="search-result-count">총 410개 문서 색인됨</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       WIKILINK HOVER PREVIEW POPOVER
+       ========================================== -->
+  <div id="hover-preview-card" class="fixed z-50 hidden w-80 sm:w-96 p-4 rounded-2xl bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border border-slate-200 dark:border-slate-700 shadow-2xl pointer-events-none transition-opacity duration-150">
+    <div id="hover-preview-badge" class="text-[10px] font-bold uppercase tracking-wider text-brand-500 mb-1"></div>
+    <div id="hover-preview-title" class="text-sm font-bold text-slate-900 dark:text-white mb-1.5 line-clamp-2"></div>
+    <div id="hover-preview-excerpt" class="text-xs text-slate-600 dark:text-slate-300 line-clamp-4 leading-relaxed"></div>
+  </div>
+
+  <!-- ==========================================
+       APPLICATION JAVASCRIPT
+       ========================================== -->
+  <script>
+    // Global State
+    let DB = null;
+    let currentDocId = null;
+    let currentSearchFilter = 'all';
+    let currentLibraryTab = 'bookmarks';
+    let fontSizeIndex = 2; // [15, 16, 17, 19, 21]
+    const FONT_SIZES = [15, 16, 17, 19, 21];
+    const FONT_LABELS = ['88%', '94%', '100%', '112%', '124%'];
+    let isSerif = false;
+    let openFolders = new Set();
+    let backlinksMap = {}; // docId -> Set of source docIds that link to it
+    let bookmarksList = []; // Array of docIds
+    let recentHistoryList = []; // Array of { id, timestamp }
+    let isAuthorUnlocked = false; // Author unlock state for restricted paid-media articles
+    let calloutQuotesStore = []; // Stores plain text quotes for one-click copy
+
+    // Initialize Application
+    document.addEventListener('DOMContentLoaded', () => {
+      initPreferences();
+      
+      // Load Data from window.ARCHIVE_DATA (loaded from ./data.js)
+      DB = window.ARCHIVE_DATA || window.VAULT_DATA;
+      if (!DB || !DB.docs || typeof DB.docs !== 'object') {
+        renderDataLoadError();
+        return;
+      }
+
+      // data.js의 실제 스키마(raw_tree/wiki_tree는 배열이 아닌 객체)를
+      // 화면 렌더러가 사용하는 공통 트리 구조로 변환합니다.
+      normalizeArchiveTrees();
+      ARTICLE_NUMBER_BY_ID = getArticleNumberMap();
+
+      // Initialize Mermaid
+      if (window.mermaid) {
+        mermaid.initialize({
+          startOnLoad: false,
+          theme: document.documentElement.classList.contains('dark') ? 'dark' : 'default',
+          securityLevel: 'loose'
+        });
+      }
+
+      buildBacklinksIndex();
+      initDefaultOpenFolders();
+      renderSidebarMenus();
+      renderHomeDashboard();
+      updateBookmarkBadges();
+
+      // Handle Initial Hash Route
+      handleHashChange();
+      window.addEventListener('hashchange', handleHashChange);
+
+      // Scroll Listener for Reading Progress & TOCSpy
+      window.addEventListener('scroll', handleWindowScroll, { passive: true });
+
+      // Keyboard Shortcuts (Cmd/Ctrl + K, ESC)
+      document.addEventListener('keydown', (e) => {
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+          e.preventDefault();
+          openSearchModal();
+        } else if (e.key === 'Escape') {
+          closeSearchModal();
+          closeLibraryModal();
+          closeAuthorUnlockModal();
+          closeMobileSidebar();
+        }
+      });
+
+      if (window.lucide) lucide.createIcons();
+    });
+
+    // Data Load Error Fallback UI
+    function renderDataLoadError() {
+      const homeView = document.getElementById('home-view');
+      homeView.innerHTML = `
+        <div class="p-8 rounded-2xl border border-red-500/30 bg-red-500/5 text-center space-y-4 my-12">
+          <div class="w-12 h-12 rounded-full bg-red-500/10 text-red-500 flex items-center justify-center mx-auto">
+            <i data-lucide="alert-triangle" class="w-6 h-6"></i>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 dark:text-white">data.js 파일을 불러올 수 없습니다</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto leading-relaxed">
+            현재 HTML 파일과 동일한 폴더에 <code class="px-1.5 py-0.5 rounded bg-slate-200 dark:bg-slate-800 font-mono">data.js</code> 파일이 위치해 있는지 확인해 주세요.
+          </p>
+        </div>
+      `;
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // 저장소 접근이 차단된 file:// 환경에서도 앱 전체가 중단되지 않도록 보호합니다.
+    function readStorage(key, fallback = null, useSession = false) {
+      try {
+        const storage = useSession ? window.sessionStorage : window.localStorage;
+        const value = storage.getItem(key);
+        return value === null ? fallback : value;
+      } catch (error) {
+        return fallback;
+      }
+    }
+
+    function writeStorage(key, value, useSession = false) {
+      try {
+        const storage = useSession ? window.sessionStorage : window.localStorage;
+        storage.setItem(key, value);
+        return true;
+      } catch (error) {
+        return false;
+      }
+    }
+
+    function removeStorage(key, useSession = false) {
+      try {
+        const storage = useSession ? window.sessionStorage : window.localStorage;
+        storage.removeItem(key);
+      } catch (error) {
+        // 저장소를 사용할 수 없는 환경에서는 메모리 상태만 유지합니다.
+      }
+    }
+
+    // Preferences (Theme, Font Size, Font Family)
+    function initPreferences() {
+      const savedTheme = readStorage('archive_theme', 'dark');
+      document.documentElement.classList.toggle('dark', savedTheme === 'dark');
+
+      const savedSizeIdx = parseInt(readStorage('archive_font_idx', ''), 10);
+      if (!isNaN(savedSizeIdx) && savedSizeIdx >= 0 && savedSizeIdx < FONT_SIZES.length) {
+        fontSizeIndex = savedSizeIdx;
+      }
+      applyFontSize();
+
+      isSerif = readStorage('archive_font_serif', 'false') === 'true';
+      applyFontFamily();
+
+      // Load Bookmarks & Recent History & Author Unlock State
+      try {
+        const savedBookmarks = JSON.parse(readStorage('archive_bookmarks', '[]'));
+        const savedRecents = JSON.parse(readStorage('archive_recent', '[]'));
+        bookmarksList = Array.isArray(savedBookmarks) ? savedBookmarks : [];
+        recentHistoryList = Array.isArray(savedRecents) ? savedRecents : [];
+      } catch (error) {
+        bookmarksList = [];
+        recentHistoryList = [];
+      }
+      isAuthorUnlocked = readStorage('archive_author_unlocked', 'false', true) === 'true'
+        || readStorage('archive_author_unlocked', 'false') === 'true';
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast-notification');
+      const msgEl = document.getElementById('toast-message');
+      if (!toast || !msgEl) return;
+      msgEl.textContent = msg;
+      toast.classList.remove('hidden', 'translate-y-2', 'opacity-0');
+      clearTimeout(window.__toastTimer);
+      window.__toastTimer = setTimeout(() => {
+        toast.classList.add('translate-y-2', 'opacity-0');
+        setTimeout(() => toast.classList.add('hidden'), 300);
+      }, 2200);
+    }
+
+    function copyTextToClipboard(text, successMsg = '클립보드에 복사되었습니다.') {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => showToast(successMsg)).catch(() => fallbackCopyText(text, successMsg));
+      } else {
+        fallbackCopyText(text, successMsg);
+      }
+    }
+
+    function fallbackCopyText(text, successMsg) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast(successMsg);
+      } catch (err) {
+        showToast('복사에 실패했습니다.');
+      }
+      document.body.removeChild(ta);
+    }
+
+    // ============================================================
+    // 아티클 열람 제한 설정
+    // ============================================================
+    // 아래 번호는 좌측 메뉴 '외부 기고문 (Articles)'에 표시되는 순서입니다.
+    // 최신 글이 1번이며, data.js의 raw_tree.articles 배열 순서를 그대로 사용합니다.
+    // 예: [1, 3, 5] = 1번, 3번, 5번 아티클 전체 열람 제한
+    // 제한하지 않을 아티클은 배열에서 번호를 제거하면 됩니다.
+    const RESTRICTED_ARTICLE_NUMBERS = new Set([
+      // 1,
+      // 3,
+    ]);
+
+    // 번호 대신 문서 ID로 지정하고 싶을 때 사용하는 선택 설정입니다.
+    // RESTRICTED_ARTICLE_NUMBERS와 함께 사용할 수 있습니다.
+    const FULL_RESTRICTED_ARTICLE_IDS = new Set([
+      // '01_Raw/articles/260415 그건 은혜로 하는 겁니다.md'
+    ]);
+
+    // 아티클 번호와 문서 ID의 대응표를 한 번 생성합니다.
+    // data.js의 메뉴 순서와 동일하므로 번호가 바뀌지 않도록 data.js 순서를 기준으로 합니다.
+    function getArticleNumberMap() {
+      const articles = (DB && DB.raw_tree && Array.isArray(DB.raw_tree.articles))
+        ? DB.raw_tree.articles
+        : Object.values(DB.docs)
+            .filter(doc => doc && doc.section === 'raw' && doc.category === 'articles')
+            .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')) || String(a.id || '').localeCompare(String(b.id || '')));
+      const map = new Map();
+      articles.forEach((article, index) => {
+        const id = typeof article === 'string' ? article : article && article.id;
+        if (id && DB.docs[id]) map.set(id, index + 1);
+      });
+      return map;
+    }
+
+    let ARTICLE_NUMBER_BY_ID = new Map();
+
+    function hasAnyPartialAccessMarker(doc) {
+      const body = String((doc && doc.body) || '');
+      return /<!--\s*ACCESS:LOCKED:(?:START|END)\s*-->/i.test(body);
+    }
+
+    function isPartialRestrictedArticle(doc) {
+      return !!doc && doc.section === 'raw' && doc.category === 'articles'
+        && hasAnyPartialAccessMarker(doc);
+    }
+
+    // 표식이 있거나 전체 제한 목록에 등록된 아티클만 잠금 대상으로 판정합니다.
+    // 표식이 없는 일반 아티클은 전체 공개됩니다.
+    function isRestrictedArticle(doc) {
+      if (!doc || doc.section !== 'raw' || doc.category !== 'articles') return false;
+      const articleNumber = ARTICLE_NUMBER_BY_ID.get(doc.id);
+      return isPartialRestrictedArticle(doc)
+        || FULL_RESTRICTED_ARTICLE_IDS.has(doc.id)
+        || (articleNumber != null && RESTRICTED_ARTICLE_NUMBERS.has(articleNumber));
+    }
+
+    // 본문을 공개 구간과 잠금 구간으로 나누어 렌더링합니다.
+    // START/END 표식이 짝이 맞지 않거나 중첩된 경우에는 본문을 노출하지 않습니다.
+    function renderPartialAccessBody(doc) {
+      const source = String((doc && doc.body) || '');
+      const startTag = /<!--\s*ACCESS:LOCKED:START\s*-->/gi;
+      const endTag = /<!--\s*ACCESS:LOCKED:END\s*-->/gi;
+      const startCount = (source.match(startTag) || []).length;
+      const endCount = (source.match(endTag) || []).length;
+      const pairPattern = /<!--\s*ACCESS:LOCKED:START\s*-->([\s\S]*?)<!--\s*ACCESS:LOCKED:END\s*-->/gi;
+      const matches = [...source.matchAll(pairPattern)];
+
+      if (startCount === 0 || startCount !== endCount || matches.length !== startCount) {
+        return `
+          <div class="article-inline-lock">
+            <div class="text-2xl mb-2">⚠️</div>
+            <h3 class="font-bold text-slate-900 dark:text-white mb-2">열람 제한 구간 설정을 확인해 주세요</h3>
+            <p class="text-sm text-slate-600 dark:text-slate-300">이 문서의 잠금 표식이 올바른 쌍으로 구성되어 있지 않아 본문을 안전하게 표시하지 않았습니다.</p>
+          </div>`;
+      }
+
+      let html = '';
+      let cursor = 0;
+      let sectionNumber = 0;
+
+      for (const match of matches) {
+        const publicPart = source.slice(cursor, match.index);
+        if (publicPart.trim()) html += parseObsidianMarkdown(publicPart);
+
+        const lockedPart = String(match[1] || '').trim();
+        sectionNumber += 1;
+
+        if (isAuthorUnlocked) {
+          // 저자 인증 상태에서는 제한 본문도 그대로 표시합니다.
+          html += parseObsidianMarkdown(lockedPart);
+        } else {
+          // 방문자에게는 제한 본문을 DOM에 넣지 않고 안내 패널만 표시합니다.
+          html += `
+            <section class="article-inline-lock" aria-label="열람 제한 구간">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 mb-3">
+                <span>🔒 열람 제한</span><span>·</span><span>일부 본문 비공개</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white mb-2">제한된 본문 구간 ${sectionNumber}</h3>
+              <p class="text-sm text-slate-600 dark:text-slate-300 mb-4">이 부분은 저자 인증 후 열람할 수 있습니다. 아래 버튼을 눌러 원문 열람 권한을 인증해 주세요.</p>
+              <button type="button" onclick="openAuthorUnlockModal()" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl text-xs font-bold bg-brand-600 hover:bg-brand-500 text-white transition">
+                <i data-lucide="key-round" class="w-4 h-4"></i><span>저자 전용 원문 잠금 해제</span>
+              </button>
+            </section>`;
+        }
+
+        cursor = match.index + match[0].length;
+      }
+
+      const trailingPublicPart = source.slice(cursor);
+      if (trailingPublicPart.trim()) html += parseObsidianMarkdown(trailingPublicPart);
+      return html;
+    }
+
+    // Estimate reading time & character count
+    function calculateReadingStats(bodyText) {
+      const clean = String(bodyText || '')
+        .replace(/```[\s\S]*?```/g, '')
+        .replace(/[#>*_`~\-\[\]()]/g, '')
+        .trim();
+      const charCount = clean.length;
+      // Korean average reading speed ~ 500 chars per minute
+      const minutes = Math.max(1, Math.round(charCount / 500));
+      return { charCount, minutes };
+    }
+
+    function toggleTheme() {
+      const isDark = document.documentElement.classList.toggle('dark');
+      writeStorage('archive_theme', isDark ? 'dark' : 'light');
+      if (window.mermaid) {
+        mermaid.initialize({ startOnLoad: false, theme: isDark ? 'dark' : 'default' });
+        if (currentDocId) renderMermaidDiagrams();
+      }
+    }
+
+    function changeFontSize(delta) {
+      fontSizeIndex = Math.max(0, Math.min(FONT_SIZES.length - 1, fontSizeIndex + delta));
+      writeStorage('archive_font_idx', String(fontSizeIndex));
+      applyFontSize();
+    }
+
+    function applyFontSize() {
+      document.documentElement.style.setProperty('--doc-font-size', FONT_SIZES[fontSizeIndex] + 'px');
+      const indicator = document.getElementById('font-size-indicator');
+      if (indicator) indicator.textContent = FONT_LABELS[fontSizeIndex];
+    }
+
+    function toggleFontFamily() {
+      isSerif = !isSerif;
+      writeStorage('archive_font_serif', String(isSerif));
+      applyFontFamily();
+    }
+
+    function applyFontFamily() {
+      const bodyEl = document.getElementById('doc-body');
+      const labelEl = document.getElementById('font-family-label');
+      if (bodyEl) {
+        bodyEl.classList.toggle('font-serif-mode', isSerif);
+        bodyEl.classList.toggle('font-sans-mode', !isSerif);
+      }
+      if (labelEl) {
+        labelEl.textContent = isSerif ? '명조' : '고딕';
+      }
+    }
+
+    // 실제 ARCHIVE_DATA의 폴더 트리를 사이드바가 요구하는 공통 형식으로 변환합니다.
+    function normalizeArchiveTrees() {
+      const toDocNode = (item) => {
+        if (!item || !item.id || !DB.docs[item.id]) return null;
+        const doc = DB.docs[item.id];
+        return {
+          type: 'doc',
+          id: item.id,
+          title: item.title || doc.title || doc.basename || item.id,
+          date: item.date || doc.date || ''
+        };
+      };
+
+      const makeFolder = (name, children) => ({
+        type: 'folder',
+        name: name || '기타',
+        children: (children || []).filter(Boolean)
+      });
+
+      const rawSource = DB.raw_tree || {};
+      const rawMenu = [];
+
+      (rawSource.sermons || []).forEach((period) => {
+        const children = [];
+        (period.root_docs || []).forEach((item) => {
+          const node = toDocNode(item);
+          if (node) children.push(node);
+        });
+        (period.subfolders || []).forEach((subfolder) => {
+          const docs = (subfolder.docs || []).map(toDocNode).filter(Boolean);
+          children.push(makeFolder(subfolder.folder_name || subfolder.folder || subfolder.folder_id, docs));
+        });
+        rawMenu.push(makeFolder(period.period_name || period.period_id, children));
+      });
+
+      const articleNodes = (rawSource.articles || []).map(toDocNode).filter(Boolean);
+      if (articleNodes.length) rawMenu.push(makeFolder('외부 기고문 (Articles)', articleNodes));
+
+      const wikiSource = DB.wiki_tree || {};
+      const wikiMenu = [
+        makeFolder('종합 보고서 (Synthesis)', (wikiSource.synthesis || []).map(toDocNode)),
+        makeFolder('강해 시리즈 (Series)', (wikiSource.series || []).map(toDocNode)),
+        makeFolder('신학자 노트 (Theologians)', (wikiSource.theologians || []).map(toDocNode)),
+        makeFolder('신학 개념 (Concepts)', (wikiSource.concepts || []).map(toDocNode))
+      ];
+
+      (wikiSource.sources_by_period || []).forEach((period) => {
+        wikiMenu.push(makeFolder(
+          period.period_name || period.period_id || '개별 분석 자료',
+          (period.docs || []).map(toDocNode)
+        ));
+      });
+
+      if ((wikiSource.meta_docs || []).length) {
+        wikiMenu.push(makeFolder('아카이브 관리 문서', (wikiSource.meta_docs || []).map(toDocNode)));
+      }
+
+      DB.raw_menu_tree = rawMenu;
+      DB.wiki_menu_tree = wikiMenu;
+
+      // 새 데이터 번들은 link_index 대신 lookup을 사용하므로 호환 별칭을 둡니다.
+      if (!DB.link_index && DB.lookup) DB.link_index = DB.lookup;
+    }
+
+    // Build Backlinks Index by scanning [[...]] in all documents
+    function buildBacklinksIndex() {
+      backlinksMap = {};
+      const docs = DB.docs;
+      const wikiLinkRegex = /\[\[([^\]|#]+)(?:[|#][^\]]*)?\]\]/g;
+
+      for (const [sourceId, doc] of Object.entries(docs)) {
+        if (!doc.body) continue;
+        let match;
+        while ((match = wikiLinkRegex.exec(doc.body)) !== null) {
+          const targetRaw = match[1].trim();
+          const targetId = resolveWikiLinkTarget(targetRaw);
+          if (targetId && targetId !== sourceId) {
+            if (!backlinksMap[targetId]) backlinksMap[targetId] = new Set();
+            backlinksMap[targetId].add(sourceId);
+          }
+        }
+      }
+    }
+
+    // Resolve Obsidian WikiLink target name to actual doc ID
+    function resolveWikiLinkTarget(targetStr) {
+      if (!targetStr || !DB) return null;
+      const clean = targetStr.trim().replace(/\.md$/i, '');
+      const lower = clean.toLowerCase();
+      const norm = lower.replace(/[\s_]+/g, '_');
+
+      if (DB.docs[targetStr]) return targetStr;
+      if (DB.docs[clean + '.md']) return clean + '.md';
+
+      const lookup = DB.lookup || DB.link_index || {};
+      const lookupCandidates = [targetStr, clean, clean + '.md', lower, norm];
+      for (const candidate of lookupCandidates) {
+        const targetId = lookup[candidate];
+        if (targetId && DB.docs[targetId]) return targetId;
+      }
+
+      // Fallback search by basename or title, ignoring spaces/underscores and case.
+      const normalizedTarget = norm.replace(/\.md$/i, '');
+      for (const [id, doc] of Object.entries(DB.docs)) {
+        const base = String(doc.basename || '').toLowerCase().replace(/[\s_]+/g, '_');
+        const title = String(doc.title || '').toLowerCase().replace(/[\s_]+/g, '_');
+        if (base === normalizedTarget || title === normalizedTarget) return id;
+      }
+      return null;
+    }
+
+    // Set initial open folders in the sidebar
+    function initDefaultOpenFolders() {
+      if (DB.raw_menu_tree && DB.raw_menu_tree.length > 0) {
+        openFolders.add('raw_0'); // Open Sermons
+      }
+      if (DB.wiki_menu_tree && DB.wiki_menu_tree.length > 0) {
+        openFolders.add('wiki_0'); // Open Synthesis
+        openFolders.add('wiki_1'); // Open Series
+      }
+    }
+
+    // Render Left Dual Sidebar (Top: RAW, Bottom: WIKI)
+    function renderSidebarMenus(filterText = '') {
+      const query = filterText.trim().toLowerCase();
+      
+      // Counts
+      const counts = DB.meta?.counts || {};
+      const rawCount = (counts.raw_sermons || 0) + (counts.raw_articles || 0);
+      const wikiCount = counts.total_wiki || 0;
+      document.getElementById('raw-total-badge').textContent = `${rawCount}편`;
+      document.getElementById('wiki-total-badge').textContent = `${wikiCount}편`;
+
+      // Render RAW Tree
+      const rawContainer = document.getElementById('raw-menu-container');
+      rawContainer.innerHTML = renderTreeNodes(DB.raw_menu_tree || [], 'raw', query);
+
+      // Render WIKI Tree
+      const wikiContainer = document.getElementById('wiki-menu-container');
+      wikiContainer.innerHTML = renderTreeNodes(DB.wiki_menu_tree || [], 'wiki', query);
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function renderTreeNodes(nodes, prefix, query) {
+      let html = '';
+      nodes.forEach((node, idx) => {
+        const nodeKey = `${prefix}_${idx}`;
+        if (node.type === 'folder') {
+          const filteredChildren = filterNodeChildren(node, query);
+          if (query && filteredChildren.length === 0) return;
+
+          const isOpen = query ? true : openFolders.has(nodeKey);
+          const itemCount = countFolderDocs(node);
+
+          html += `
+            <div class="space-y-0.5">
+              <button onclick="toggleFolder('${nodeKey}')" class="w-full flex items-center justify-between px-2.5 py-1.5 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800/70 transition group">
+                <span class="flex items-center gap-2 truncate">
+                  <i data-lucide="chevron-right" class="w-3.5 h-3.5 text-slate-400 transition-transform duration-200 shrink-0 ${isOpen ? 'rotate-90 text-brand-500' : ''}"></i>
+                  <span class="truncate">${escapeHtml(node.name)}</span>
+                </span>
+                <span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 ml-1 shrink-0">${itemCount}</span>
+              </button>
+              <div class="${isOpen ? 'block' : 'hidden'} pl-3 ml-2 border-l border-slate-200/70 dark:border-slate-800 space-y-0.5">
+                ${renderTreeNodes(filteredChildren, nodeKey, query)}
+              </div>
+            </div>
+          `;
+        } else {
+          // Document Item
+          if (query && !matchesFilter(node, query)) return;
+          const isActive = currentDocId === node.id;
+          const activeClass = isActive
+            ? 'bg-brand-500/10 text-brand-600 dark:bg-brand-500/20 dark:text-brand-300 font-semibold border-l-2 border-brand-500'
+            : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800/50 hover:text-slate-900 dark:hover:text-slate-200';
+
+          const displayTitle = node.title || node.label || '';
+          const isRestricted = node.id && DB.docs[node.id] && isRestrictedArticle(DB.docs[node.id]);
+          const lockBadge = isRestricted
+            ? `<span class="px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20 shrink-0">${isAuthorUnlocked ? '🔓 해제' : '🔒 제한'}</span>`
+            : '';
+          const dateBadge = node.date ? `<span class="text-[10px] font-mono text-slate-400 dark:text-slate-500 shrink-0">${node.date.slice(2)}</span>` : '';
+
+          html += `
+            <button data-doc-id="${escapeAttr(node.id)}" onclick="openDoc('${escapeJs(node.id)}')" class="w-full text-left flex items-center justify-between gap-1.5 px-2.5 py-1.5 rounded-lg text-xs transition ${activeClass}">
+              <span class="truncate leading-snug" title="${escapeAttr(displayTitle)}">${escapeHtml(displayTitle)}</span>
+              <span class="flex items-center gap-1 shrink-0">${lockBadge}${dateBadge}</span>
+            </button>
+          `;
+        }
+      });
+      return html;
+    }
+
+    function countFolderDocs(folderNode) {
+      if (!folderNode.children) return 0;
+      return folderNode.children.reduce((acc, child) => {
+        return acc + (child.type === 'folder' ? countFolderDocs(child) : 1);
+      }, 0);
+    }
+
+    function matchesFilter(docNode, query) {
+      const t = (docNode.title || '').toLowerCase();
+      const l = (docNode.label || '').toLowerCase();
+      const d = (docNode.date || '').toLowerCase();
+      return t.includes(query) || l.includes(query) || d.includes(query);
+    }
+
+    function filterNodeChildren(folderNode, query) {
+      if (!query) return folderNode.children || [];
+      const res = [];
+      for (const child of (folderNode.children || [])) {
+        if (child.type === 'folder') {
+          const sub = filterNodeChildren(child, query);
+          if (sub.length > 0) res.push({ ...child, children: sub });
+        } else if (matchesFilter(child, query)) {
+          res.push(child);
+        }
+      }
+      return res;
+    }
+
+    function toggleFolder(nodeKey) {
+      if (openFolders.has(nodeKey)) {
+        openFolders.delete(nodeKey);
+      } else {
+        openFolders.add(nodeKey);
+      }
+      const filterVal = document.getElementById('sidebar-filter-input').value;
+      renderSidebarMenus(filterVal);
+    }
+
+    function collapseAllTrees() {
+      openFolders.clear();
+      const filterVal = document.getElementById('sidebar-filter-input').value;
+      renderSidebarMenus(filterVal);
+    }
+
+    function filterSidebarMenu(val) {
+      const clearBtn = document.getElementById('sidebar-filter-clear');
+      if (clearBtn) clearBtn.classList.toggle('hidden', !val);
+      renderSidebarMenus(val);
+    }
+
+    function clearSidebarFilter() {
+      const input = document.getElementById('sidebar-filter-input');
+      input.value = '';
+      filterSidebarMenu('');
+    }
+
+    // Expand parent folders of the active document so it's visible in sidebar
+    function expandParentsForDoc(docId) {
+      function searchTree(nodes, prefix) {
+        for (let i = 0; i < nodes.length; i++) {
+          const n = nodes[i];
+          const key = `${prefix}_${i}`;
+          if (n.type === 'folder') {
+            if (searchTree(n.children || [], key)) {
+              openFolders.add(key);
+              return true;
+            }
+          } else if (n.id === docId) {
+            return true;
+          }
+        }
+        return false;
+      }
+      searchTree(DB.raw_menu_tree || [], 'raw');
+      searchTree(DB.wiki_menu_tree || [], 'wiki');
+    }
+
+    // Render Home Dashboard View
+    function renderHomeDashboard() {
+      const counts = DB.meta?.counts || {};
+      const statsItems = [
+        { label: '원본 설교문', value: counts.raw_sermons || 126, icon: 'mic', color: 'text-amber-500', bg: 'bg-amber-500/10' },
+        { label: '외부 기고문', value: counts.raw_articles || 12, icon: 'newspaper', color: 'text-emerald-500', bg: 'bg-emerald-500/10' },
+        { label: '종합 보고서', value: counts.wiki_synthesis || 8, icon: 'compass', color: 'text-brand-500', bg: 'bg-brand-500/10' },
+        { label: '강해 시리즈', value: counts.wiki_series || 16, icon: 'library', color: 'text-blue-500', bg: 'bg-blue-500/10' },
+        { label: '신학 개념', value: counts.wiki_concepts || 66, icon: 'lightbulb', color: 'text-mint-500', bg: 'bg-mint-500/10' },
+        { label: '신학자 노트', value: counts.wiki_theologians || 42, icon: 'users', color: 'text-purple-500', bg: 'bg-purple-500/10' },
+      ];
+
+      document.getElementById('stats-grid').innerHTML = statsItems.map(st => `
+        <div class="p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/50 flex items-center gap-3.5 shadow-sm">
+          <div class="w-10 h-10 rounded-xl ${st.bg} ${st.color} flex items-center justify-center shrink-0">
+            <i data-lucide="${st.icon}" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <div class="text-xl font-extrabold font-mono text-slate-900 dark:text-white">${st.value}</div>
+            <div class="text-xs text-slate-500 dark:text-slate-400">${st.label}</div>
+          </div>
+        </div>
+      `).join('');
+
+      // Synthesis Reports Grid
+      const synthesisDocs = Object.values(DB.docs).filter(d => d.category === 'synthesis').sort((a, b) => a.id.localeCompare(b.id));
+      document.getElementById('home-synthesis-grid').innerHTML = synthesisDocs.map(doc => `
+        <div onclick="openDoc('${escapeJs(doc.id)}')" class="group cursor-pointer p-4 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-brand-500 dark:hover:border-brand-400 transition shadow-sm flex items-start justify-between gap-3">
+          <div class="space-y-1 min-w-0">
+            <div class="flex items-center gap-2">
+              <span class="px-2 py-0.5 text-[10px] font-bold rounded bg-brand-500/10 text-brand-600 dark:text-brand-300">SYNTHESIS</span>
+            </div>
+            <h3 class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand-500 transition truncate">${escapeHtml(doc.title)}</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400 line-clamp-2">${escapeHtml(doc.subject || '10년 사역의 신학적 궤적과 성숙도를 종합 분석한 마스터 리포트')}</p>
+          </div>
+          <i data-lucide="arrow-up-right" class="w-4 h-4 text-slate-400 group-hover:text-brand-500 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition shrink-0 mt-1"></i>
+        </div>
+      `).join('');
+
+      // 4 Periods Overview Cards
+      const periodInfos = [
+        {
+          title: 'Period 1. 2016–2019 Y교회',
+          role: '전임전도사 (고등부·청년부·장년)',
+          desc: '도덕주의와 자격주의의 해체, 말구유의 역설, 그리고 성경이 내 인생을 읽어주는 주체적 성서관의 원형이 형성된 시기 (16편)',
+          reportId: '02_Wiki/synthesis/Period_1_2016-2019_Y교회_사역총괄보고서.md',
+          badge: '16편 복원'
+        },
+        {
+          title: 'Period 2. 2021–2023 C교회',
+          role: '부목사 (청년부 4대 강해 & 오후/대예배)',
+          desc: '갈라디아서·계시록·레위기·누가복음 4대 메가 연속 강해와 요나서 강해를 통해 성서신학적 지평과 제사장적 공적 책임을 집대성한 시기 (50편)',
+          reportId: '02_Wiki/synthesis/Period_2_2021-2023_C교회_사역총괄보고서.md',
+          badge: '50편 완결'
+        },
+        {
+          title: 'Period 3. 2024–2026 사당역 성경공부방',
+          role: '탈제도권 독립 연구 & 수련회·신학교 강의',
+          desc: '비극 문학과 고통의 비낭만성, 성서 탈신화화, 보혜사 기억의 재채색, 그리고 오이코스 대학원 복음서 신학 강의가 정련된 시기 (17편)',
+          reportId: '02_Wiki/synthesis/Period_3_2024-2026_사당역성경공부방_사역총괄보고서.md',
+          badge: '17편 완결'
+        },
+        {
+          title: 'Period 4. 2026 D교회',
+          role: '부목사 (청년부 실존 강해 & 수요예배 중직자)',
+          desc: '야곱·욥기·요나서·다니엘서 청년 강해와 룻기·갈라디아서 수요 강해를 통해 하나님의 져주심과 의리의 삼중주를 선포한 시기 (43편)',
+          reportId: '02_Wiki/synthesis/Period_4_2026_D교회_사역총괄보고서.md',
+          badge: '43편 완결'
+        }
+      ];
+
+      document.getElementById('home-periods-grid').innerHTML = periodInfos.map(p => `
+        <div onclick="openDoc('${escapeJs(p.reportId)}')" class="group cursor-pointer p-5 rounded-2xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/50 hover:border-amber-500/70 transition space-y-2.5 shadow-sm">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-bold text-amber-600 dark:text-amber-400">${escapeHtml(p.role)}</span>
+            <span class="px-2 py-0.5 text-[10px] font-mono rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">${p.badge}</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 dark:text-white group-hover:text-amber-500 transition">${escapeHtml(p.title)}</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">${escapeHtml(p.desc)}</p>
+          <div class="pt-1 flex items-center gap-1 text-xs font-semibold text-brand-600 dark:text-brand-400">
+            <span>시기별 총괄 보고서 읽기</span>
+            <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+          </div>
+        </div>
+      `).join('');
+
+      // Concepts & Theologians Clouds
+      const concepts = Object.values(DB.docs).filter(d => d.category === 'concepts');
+      const theologians = Object.values(DB.docs).filter(d => d.category === 'theologians');
+      
+      document.getElementById('concept-count-label').textContent = `${concepts.length}개`;
+      document.getElementById('theologian-count-label').textContent = `${theologians.length}명`;
+
+      document.getElementById('home-concepts-cloud').innerHTML = concepts.map(c => `
+        <button onclick="openDoc('${escapeJs(c.id)}')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 hover:bg-mint-500/15 text-slate-700 hover:text-mint-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:text-mint-300 border border-transparent hover:border-mint-500/30 transition">
+          ${escapeHtml(c.basename.replace(/_/g, ' '))}
+        </button>
+      `).join('');
+
+      document.getElementById('home-theologians-cloud').innerHTML = theologians.map(t => `
+        <button onclick="openDoc('${escapeJs(t.id)}')" class="px-2.5 py-1 rounded-lg text-xs font-medium bg-slate-100 hover:bg-purple-500/15 text-slate-700 hover:text-purple-600 dark:bg-slate-800 dark:text-slate-300 dark:hover:text-purple-300 border border-transparent hover:border-purple-500/30 transition">
+          ${escapeHtml(t.basename.replace(/_/g, ' '))}
+        </button>
+      `).join('');
+
+      // Render Inspiration Widget & Bookmarks/Recent Widgets
+      refreshInspirationWidget();
+      renderHomeBookmarksAndRecent();
+    }
+
+    // ==========================================
+    // 🎲 1. 오늘의 영감 조각 (Random Inspiration Widget)
+    // ==========================================
+    function extractBestExcerpt(doc) {
+      if (!doc) return '';
+      if (doc.subject && doc.subject.trim().length > 20) {
+        return doc.subject.trim();
+      }
+      const body = doc.body || '';
+      // Try to find a callout quote or blockquote first
+      const quoteMatch = body.match(/>\s*(?:\[!quote\][^\n]*\n)?\s*>\s*([^\n]{25,220})/);
+      if (quoteMatch && quoteMatch[1]) {
+        return quoteMatch[1].replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, '$2$1').replace(/[*_`"]/g, '').trim();
+      }
+      // Otherwise grab clean paragraph text
+      const paragraphs = body
+        .split(/\n\s*\n/)
+        .map(p => p.replace(/^#+\s+.*$/gm, '').replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, '$2$1').replace(/[*>`#\-]/g, '').trim())
+        .filter(p => p.length >= 45 && !p.startsWith('설교일') && !p.startsWith('본문'));
+      if (paragraphs.length > 0) {
+        const chosen = paragraphs[Math.min(1, paragraphs.length - 1)];
+        return chosen.slice(0, 175) + (chosen.length > 175 ? '...' : '');
+      }
+      return doc.title || '';
+    }
+
+    function refreshInspirationWidget() {
+      if (!DB || !DB.docs) return;
+      const allDocs = Object.values(DB.docs);
+      const sermons = allDocs.filter(d => (d.section === 'raw' && d.category === 'sermons') || d.category === 'sources');
+      const concepts = allDocs.filter(d => d.category === 'concepts' || d.category === 'synthesis');
+
+      const randSermon = sermons[Math.floor(Math.random() * sermons.length)];
+      const randConcept = concepts[Math.floor(Math.random() * concepts.length)];
+
+      const picks = [
+        { doc: randSermon, typeLabel: '📖 오늘의 설교 영감', accent: 'amber' },
+        { doc: randConcept, typeLabel: '💡 오늘의 신학 개념 노트', accent: 'brand' }
+      ].filter(item => item.doc);
+
+      const grid = document.getElementById('inspiration-cards-grid');
+      if (!grid) return;
+
+      grid.innerHTML = picks.map((item, idx) => {
+        const d = item.doc;
+        const excerpt = extractBestExcerpt(d);
+        const scriptureBadge = (d.scripture && d.scripture.length > 0)
+          ? `<span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-700 dark:text-amber-300 text-[11px] font-medium">${escapeHtml(d.scripture[0])}</span>`
+          : '';
+        return `
+          <div class="flex flex-col justify-between p-4 sm:p-5 rounded-2xl bg-white/90 dark:bg-slate-900/90 border border-slate-200/90 dark:border-slate-800 shadow-sm hover:border-brand-500/60 transition group">
+            <div class="space-y-2.5">
+              <div class="flex items-center justify-between gap-2 flex-wrap">
+                <span class="text-[11px] font-bold px-2.5 py-0.5 rounded-full ${item.accent === 'amber' ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400' : 'bg-brand-500/10 text-brand-600 dark:text-brand-300'}">
+                  ${item.typeLabel}
+                </span>
+                <div class="flex items-center gap-1.5">
+                  ${scriptureBadge}
+                  ${d.date ? `<span class="text-[11px] font-mono text-slate-400">${escapeHtml(d.date)}</span>` : ''}
+                </div>
+              </div>
+
+              <h3 onclick="openDoc('${escapeJs(d.id)}')" class="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-brand-500 cursor-pointer transition line-clamp-1">
+                ${escapeHtml(d.title)}
+              </h3>
+
+              <blockquote class="text-xs sm:text-[13px] text-slate-600 dark:text-slate-300 italic bg-slate-50 dark:bg-slate-800/60 p-3 rounded-xl border-l-3 border-brand-500 leading-relaxed line-clamp-3">
+                “${escapeHtml(excerpt)}”
+              </blockquote>
+            </div>
+
+            <div class="pt-3 mt-3 border-t border-slate-100 dark:border-slate-800/80 flex items-center justify-between gap-2">
+              <button onclick="copyInspirationQuote(${idx})" data-insp-quote="${escapeAttr(`“${excerpt}” — ${d.title}`)}" id="insp-copy-btn-${idx}" class="inline-flex items-center gap-1 text-[11px] font-medium text-slate-500 hover:text-brand-600 dark:text-slate-400 dark:hover:text-brand-300 transition">
+                <i data-lucide="copy" class="w-3 h-3"></i>
+                <span>발췌문 복사</span>
+              </button>
+              <button onclick="openDoc('${escapeJs(d.id)}')" class="inline-flex items-center gap-1 text-xs font-bold text-brand-600 dark:text-brand-400 hover:underline">
+                <span>전문 읽으러 이동</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function copyInspirationQuote(idx) {
+      const btn = document.getElementById(`insp-copy-btn-${idx}`);
+      if (!btn) return;
+      const text = btn.getAttribute('data-insp-quote') || '';
+      copyTextToClipboard(text, '영감 발췌문이 클립보드에 복사되었습니다.');
+    }
+
+    // ==========================================
+    // ⭐ 2. 북마크 & 최근 열람 기록 관리
+    // ==========================================
+    function recordRecentDoc(docId) {
+      if (!docId || !DB.docs[docId]) return;
+      recentHistoryList = recentHistoryList.filter(item => item.id !== docId);
+      recentHistoryList.unshift({ id: docId, timestamp: Date.now() });
+      if (recentHistoryList.length > 25) recentHistoryList = recentHistoryList.slice(0, 25);
+      writeStorage('archive_recent', JSON.stringify(recentHistoryList));
+      renderHomeBookmarksAndRecent();
+    }
+
+    function clearRecentHistory() {
+      recentHistoryList = [];
+      writeStorage('archive_recent', '[]');
+      renderHomeBookmarksAndRecent();
+      if (!document.getElementById('library-modal').classList.contains('hidden')) {
+        renderLibraryModalContent();
+      }
+      showToast('최근 열람 기록을 비웠습니다.');
+    }
+
+    function toggleCurrentDocBookmark() {
+      if (!currentDocId) return;
+      toggleBookmarkById(currentDocId);
+      updateDocBookmarkButtonUI();
+    }
+
+    function toggleBookmarkById(docId) {
+      const idx = bookmarksList.indexOf(docId);
+      if (idx >= 0) {
+        bookmarksList.splice(idx, 1);
+        showToast('북마크에서 제거되었습니다.');
+      } else {
+        bookmarksList.unshift(docId);
+        showToast('⭐ 내 북마크 보관함에 저장되었습니다.');
+      }
+      writeStorage('archive_bookmarks', JSON.stringify(bookmarksList));
+      updateBookmarkBadges();
+      renderHomeBookmarksAndRecent();
+      if (!document.getElementById('library-modal').classList.contains('hidden')) {
+        renderLibraryModalContent();
+      }
+    }
+
+    function updateBookmarkBadges() {
+      const countEl = document.getElementById('header-bookmark-count');
+      if (countEl) countEl.textContent = bookmarksList.length;
+      const homeBadge = document.getElementById('home-bookmark-badge');
+      if (homeBadge) homeBadge.textContent = `${bookmarksList.length}개 저장됨`;
+    }
+
+    function updateDocBookmarkButtonUI() {
+      const btn = document.getElementById('doc-bookmark-btn');
+      const label = document.getElementById('doc-bookmark-label');
+      if (!btn || !label || !currentDocId) return;
+      const isBookmarked = bookmarksList.includes(currentDocId);
+      if (isBookmarked) {
+        btn.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold border border-amber-500/50 bg-amber-500/10 text-amber-600 dark:text-amber-400 transition shadow-sm';
+        label.textContent = '★ 북마크됨';
+      } else {
+        btn.className = 'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 hover:border-amber-500/60 transition shadow-sm';
+        label.textContent = '☆ 북마크 저장';
+      }
+    }
+
+    function renderHomeBookmarksAndRecent() {
+      const bmContainer = document.getElementById('home-bookmarks-list');
+      const recContainer = document.getElementById('home-recent-list');
+      if (!bmContainer || !recContainer) return;
+
+      const validBookmarks = bookmarksList.map(id => DB.docs[id]).filter(Boolean);
+      if (validBookmarks.length === 0) {
+        bmContainer.innerHTML = `<div class="py-6 text-center text-xs text-slate-400">아직 북마크한 문서가 없습니다. 문서 상단의 [☆ 북마크 저장] 버튼을 눌러보세요.</div>`;
+      } else {
+        bmContainer.innerHTML = validBookmarks.slice(0, 8).map(d => `
+          <div class="flex items-center justify-between gap-2 px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/70 transition group">
+            <button onclick="openDoc('${escapeJs(d.id)}')" class="flex-1 text-left min-w-0 flex items-center gap-2">
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-amber-500/10 text-amber-600 dark:text-amber-400 shrink-0">${d.section.toUpperCase()}</span>
+              <span class="text-xs font-semibold text-slate-800 dark:text-slate-200 group-hover:text-brand-500 truncate">${escapeHtml(d.title)}</span>
+            </button>
+            <button onclick="toggleBookmarkById('${escapeJs(d.id)}')" class="text-slate-300 hover:text-rose-500 p-1 shrink-0" title="북마크 해제">
+              <i data-lucide="x" class="w-3.5 h-3.5"></i>
+            </button>
+          </div>
+        `).join('');
+      }
+
+      const validRecents = recentHistoryList.map(item => ({ doc: DB.docs[item.id], ts: item.timestamp })).filter(x => x.doc);
+      if (validRecents.length === 0) {
+        recContainer.innerHTML = `<div class="py-6 text-center text-xs text-slate-400">최근 열람한 문서 기록이 없습니다.</div>`;
+      } else {
+        recContainer.innerHTML = validRecents.slice(0, 8).map(({ doc }) => `
+          <button onclick="openDoc('${escapeJs(doc.id)}')" class="w-full text-left flex items-center justify-between gap-2 px-3 py-2 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/70 transition group">
+            <div class="min-w-0 flex items-center gap-2">
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-brand-500/10 text-brand-600 dark:text-brand-400 shrink-0">${doc.category}</span>
+              <span class="text-xs font-medium text-slate-700 dark:text-slate-300 group-hover:text-brand-500 truncate">${escapeHtml(doc.title)}</span>
+            </div>
+            <span class="text-[10px] font-mono text-slate-400 shrink-0">${doc.date || ''}</span>
+          </button>
+        `).join('');
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function openLibraryModal(tab = 'bookmarks') {
+      currentLibraryTab = tab;
+      document.getElementById('library-modal').classList.remove('hidden');
+      switchLibraryTab(tab);
+    }
+
+    function closeLibraryModal() {
+      document.getElementById('library-modal').classList.add('hidden');
+    }
+
+    function switchLibraryTab(tab) {
+      currentLibraryTab = tab;
+      const bmBtn = document.getElementById('lib-tab-bookmarks');
+      const recBtn = document.getElementById('lib-tab-recent');
+      if (tab === 'bookmarks') {
+        bmBtn.className = 'px-3 py-1.5 rounded-lg font-bold bg-brand-600 text-white transition';
+        recBtn.className = 'px-3 py-1.5 rounded-lg font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition';
+      } else {
+        recBtn.className = 'px-3 py-1.5 rounded-lg font-bold bg-brand-600 text-white transition';
+        bmBtn.className = 'px-3 py-1.5 rounded-lg font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800 transition';
+      }
+      renderLibraryModalContent();
+    }
+
+    function renderLibraryModalContent() {
+      const listEl = document.getElementById('library-modal-list');
+      if (currentLibraryTab === 'bookmarks') {
+        const docs = bookmarksList.map(id => DB.docs[id]).filter(Boolean);
+        if (docs.length === 0) {
+          listEl.innerHTML = `<div class="py-12 text-center text-sm text-slate-400">저장된 북마크가 없습니다.</div>`;
+        } else {
+          listEl.innerHTML = docs.map(d => `
+            <div class="flex items-center justify-between gap-3 p-3 rounded-xl border border-slate-200/70 dark:border-slate-800 hover:border-brand-500 transition">
+              <button onclick="openDoc('${escapeJs(d.id)}'); closeLibraryModal();" class="flex-1 text-left min-w-0 space-y-0.5">
+                <div class="text-[10px] font-mono text-amber-500 font-bold">${d.section.toUpperCase()} · ${d.category}</div>
+                <div class="text-sm font-bold text-slate-900 dark:text-white truncate">${escapeHtml(d.title)}</div>
+              </button>
+              <button onclick="toggleBookmarkById('${escapeJs(d.id)}')" class="px-2.5 py-1 rounded-lg text-xs text-rose-500 hover:bg-rose-500/10 transition">삭제</button>
+            </div>
+          `).join('');
+        }
+      } else {
+        const docs = recentHistoryList.map(item => DB.docs[item.id]).filter(Boolean);
+        if (docs.length === 0) {
+          listEl.innerHTML = `<div class="py-12 text-center text-sm text-slate-400">최근 열람한 문서 기록이 없습니다.</div>`;
+        } else {
+          listEl.innerHTML = docs.map(d => `
+            <button onclick="openDoc('${escapeJs(d.id)}'); closeLibraryModal();" class="w-full text-left flex items-center justify-between gap-3 p-3 rounded-xl border border-slate-200/70 dark:border-slate-800 hover:border-brand-500 transition">
+              <div class="min-w-0 space-y-0.5">
+                <div class="text-[10px] font-mono text-brand-500 font-bold">${d.section.toUpperCase()} · ${d.category}</div>
+                <div class="text-sm font-bold text-slate-900 dark:text-white truncate">${escapeHtml(d.title)}</div>
+              </div>
+              <span class="text-xs font-mono text-slate-400 shrink-0">${d.date || ''}</span>
+            </button>
+          `).join('');
+        }
+      }
+    }
+
+    // Navigation & Routing
+    function handleHashChange() {
+      let hash = window.location.hash.slice(1);
+      try { hash = decodeURIComponent(hash); } catch (error) { /* 잘못된 퍼센트 인코딩은 원문 hash로 처리 */ }
+      if (!hash || hash === 'home') {
+        showHomeView();
+      } else {
+        const resolved = DB.docs[hash] ? hash : resolveWikiLinkTarget(hash);
+        if (resolved && DB.docs[resolved]) {
+          renderDocument(resolved);
+        } else {
+          showHomeView();
+        }
+      }
+    }
+
+    function navigateHome(e) {
+      if (e) e.preventDefault();
+      window.location.hash = 'home';
+      showHomeView();
+    }
+
+    function showHomeView() {
+      currentDocId = null;
+      document.getElementById('home-view').classList.remove('hidden');
+      document.getElementById('doc-view').classList.add('hidden');
+      document.getElementById('toc-wrapper').classList.add('hidden');
+      document.getElementById('right-reading-status').classList.add('hidden');
+      renderSidebarMenus(document.getElementById('sidebar-filter-input').value);
+      renderHomeBookmarksAndRecent();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function openDoc(docId) {
+      hideHoverPreview();
+      closeMobileSidebar();
+      if (!docId || !DB.docs[docId]) {
+        const resolved = resolveWikiLinkTarget(docId);
+        if (resolved) docId = resolved;
+        else return;
+      }
+      window.location.hash = encodeURIComponent(docId);
+    }
+
+    function openRandomDoc() {
+      const keys = Object.keys(DB.docs);
+      const randomKey = keys[Math.floor(Math.random() * keys.length)];
+      openDoc(randomKey);
+    }
+
+    // Render Document Content
+    function renderDocument(docId) {
+      const doc = DB.docs[docId];
+      if (!doc) return;
+      currentDocId = docId;
+      calloutQuotesStore = [];
+
+      // 현재 문서가 속한 폴더를 펼치고 활성 문서 표시를 즉시 갱신합니다.
+      expandParentsForDoc(docId);
+      const sidebarFilter = document.getElementById('sidebar-filter-input');
+      renderSidebarMenus(sidebarFilter ? sidebarFilter.value : '');
+
+      // 원본 기고문과 연결된 WIKI 분석 문서를 cross_map에서 조회합니다.
+      const counterpartId = (DB.cross_map && DB.cross_map.raw_to_wiki)
+        ? DB.cross_map.raw_to_wiki[docId]
+        : null;
+
+      // Record in recent history & update bookmark UI
+      recordRecentDoc(docId);
+      updateDocBookmarkButtonUI();
+
+      document.getElementById('home-view').classList.add('hidden');
+      document.getElementById('doc-view').classList.remove('hidden');
+      document.getElementById('right-reading-status').classList.remove('hidden');
+
+      // Expand sidebar tree to highlight current document
+      // 3. Badges & Title & Estimated Reading Time
+      const isRaw = doc.section === 'raw';
+      const isRestricted = isRestrictedArticle(doc);
+      const readingStats = calculateReadingStats(doc.body || '');
+
+      const rightReadingTime = document.getElementById('right-reading-time');
+      if (rightReadingTime) {
+        rightReadingTime.innerHTML = `
+          <span>예상 독서 시간</span>
+          <span class="font-mono font-semibold text-slate-700 dark:text-slate-300">약 ${readingStats.minutes}분 (${readingStats.charCount.toLocaleString()}자)</span>
+        `;
+      }
+
+      const catLabels = {
+        sermons: '설교 원문',
+        articles: '외부 기고문',
+        synthesis: '종합 보고서',
+        series: '강해 시리즈',
+        concepts: '신학 개념',
+        theologians: '신학자 노트',
+        sources: '개별 정밀 분석'
+      };
+      const badgeColor = isRaw
+        ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20'
+        : 'bg-brand-500/10 text-brand-600 dark:text-brand-300 border-brand-500/20';
+
+      let badgesHtml = `
+        <span class="px-2.5 py-0.5 rounded-full text-[11px] font-bold border ${badgeColor}">
+          ${isRaw ? 'RAW ARCHIVE' : 'WIKI BASE'} · ${catLabels[doc.category] || doc.category}
+        </span>
+      `;
+      if (isRestricted) {
+        badgesHtml += isAuthorUnlocked
+          ? `<button onclick="lockAuthorMode()" class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border border-emerald-500/30 hover:bg-emerald-500/25 transition" title="클릭 시 다시 보호 모드로 전환">🔓 저자 잠금 해제됨 (보호 모드로 전환)</button>`
+          : `<button onclick="openAuthorUnlockModal()" class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-500/15 text-rose-600 dark:text-rose-400 border border-rose-500/30 hover:bg-rose-500/25 transition">🔒 열람 제한 · 유료 매체 저작권 보호</button>`;
+      }
+      if (doc.date) {
+        badgesHtml += `
+          <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+            <i data-lucide="calendar" class="w-3 h-3"></i>
+            ${escapeHtml(doc.date)}
+          </span>
+        `;
+      }
+      badgesHtml += `
+        <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-mono bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+          <i data-lucide="clock" class="w-3 h-3 text-brand-500"></i>
+          <span>약 ${readingStats.minutes}분 소요</span>
+        </span>
+      `;
+      if (doc.series) {
+        const cleanSeries = doc.series.replace(/^\[\[|\]\]$/g, '');
+        badgesHtml += `
+          <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-mint-500/10 text-mint-600 dark:text-mint-300 border border-mint-500/20">
+            <i data-lucide="layers" class="w-3 h-3"></i>
+            ${escapeHtml(cleanSeries)}
+          </span>
+        `;
+      }
+      document.getElementById('doc-badges').innerHTML = badgesHtml;
+      document.getElementById('doc-title').textContent = doc.title || doc.basename;
+
+      // Subject Callout
+      const subjectEl = document.getElementById('doc-subject');
+      if (doc.subject) {
+        subjectEl.textContent = doc.subject;
+        subjectEl.classList.remove('hidden');
+      } else {
+        subjectEl.classList.add('hidden');
+      }
+
+      // 4. Metadata Box
+      renderMetadataBox(doc);
+
+      // 5. Parse Markdown Body (with Paid-Media Teaser Protection & Callout Copy)
+      const bodyEl = document.getElementById('doc-body');
+      const paywallCurtainEl = document.getElementById('doc-paywall-curtain');
+
+      if (isPartialRestrictedArticle(doc)) {
+        // 아티클 본문 안의 START/END 표식 구간만 제한하고, 그 앞뒤 문단은 공개합니다.
+        bodyEl.innerHTML = renderPartialAccessBody(doc);
+        paywallCurtainEl.classList.add('hidden');
+        paywallCurtainEl.innerHTML = '';
+      } else if (isRestricted && !isAuthorUnlocked) {
+        // 전체 제한 목록에 등록된 아티클만 기존 티저 + 전체 잠금 커튼을 사용합니다.
+        const fullMd = doc.body || '';
+        const paragraphs = fullMd.split(/\n\s*\n/);
+        const teaserMd = paragraphs.slice(0, Math.min(4, paragraphs.length)).join('\n\n');
+        bodyEl.innerHTML = `<div class="article-teaser-mask pb-10 select-none">${parseObsidianMarkdown(teaserMd)}</div>`;
+        renderPaywallCurtain(doc, counterpartId);
+      } else {
+        // 제한 대상이 아닌 문서는 전체 공개합니다.
+        bodyEl.innerHTML = parseObsidianMarkdown(doc.body || '');
+        paywallCurtainEl.classList.add('hidden');
+        paywallCurtainEl.innerHTML = '';
+      }
+
+      // 6. Build TOC & Mermaid Diagrams
+      buildTableOfContents();
+      renderMermaidDiagrams();
+      bindWikiLinkHoverEvents();
+
+      // 7. Backlinks & Prev/Next
+      renderBacklinks(docId);
+      renderPrevNextNav(docId);
+
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      handleWindowScroll();
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // ==========================================
+    // 🔒 3. 유료 매체 기고문 저작권 보호 커튼 & 저자 잠금 해제
+    // ==========================================
+    function renderPaywallCurtain(doc, counterpartId) {
+      const curtainEl = document.getElementById('doc-paywall-curtain');
+      curtainEl.classList.remove('hidden');
+
+      const wikiBtnHtml = (counterpartId && DB.docs[counterpartId])
+        ? `
+          <button onclick="openDoc('${escapeJs(counterpartId)}')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl text-xs sm:text-sm font-bold bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-500/25 transition">
+            <i data-lucide="brain-circuit" class="w-4 h-4"></i>
+            <span>🧠 WIKI 신학 분석 노트로 핵심 논지 열람하기 (전체 공개)</span>
+          </button>
+        `
+        : '';
+
+      curtainEl.innerHTML = `
+        <div class="relative -mt-20 pt-24 pb-8 px-5 sm:px-8 rounded-3xl border border-rose-500/25 bg-gradient-to-b from-white/70 via-white to-slate-50 dark:from-[#0B0F17]/75 dark:via-[#111827] dark:to-[#0E131F] backdrop-blur-md shadow-xl text-center space-y-5">
+          <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full text-xs font-bold bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-rose-500/20">
+            <span>🔒 열람 제한</span>
+            <span>·</span>
+            <span>유료 매체 기고 원고 저작권 보호</span>
+          </div>
+
+          <div class="max-w-xl mx-auto space-y-2">
+            <h3 class="text-lg sm:text-xl font-extrabold text-slate-900 dark:text-white">
+              출판 및 유료 매체 기고 정책에 따라 도입부 티저(Teaser)만 제공됩니다
+            </h3>
+            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+              본 원고(<strong>「${escapeHtml(doc.title)}」</strong>)는 외부 유료 매체에 정식 기고된 칼럼/아티클로, 매체의 저작권과 출판 정책을 존중하여 아카이브에서는 도입부 미리보기만 노출합니다. 대신 이 글의 신학적 구조와 핵심 테제를 해부한 <strong>WIKI 신학 분석 노트</strong>는 제한 없이 열람하실 수 있습니다.
+            </p>
+          </div>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
+            ${wikiBtnHtml}
+            <button onclick="openAuthorUnlockModal()" class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-4 py-3 rounded-xl text-xs font-semibold bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 transition">
+              <i data-lucide="key-round" class="w-3.5 h-3.5 text-amber-500"></i>
+              <span>저자 전용 원문 잠금 해제</span>
+            </button>
+          </div>
+        </div>
+      `;
+    }
+
+    function openAuthorUnlockModal() {
+      const modal = document.getElementById('author-unlock-modal');
+      const input = document.getElementById('author-passcode-input');
+      const err = document.getElementById('author-unlock-error');
+      modal.classList.remove('hidden');
+      err.classList.add('hidden');
+      input.value = '';
+      setTimeout(() => input.focus(), 50);
+    }
+
+    function closeAuthorUnlockModal() {
+      document.getElementById('author-unlock-modal').classList.add('hidden');
+    }
+
+    function confirmAuthorUnlock() {
+      const input = document.getElementById('author-passcode-input');
+      const err = document.getElementById('author-unlock-error');
+      const val = (input.value || '').trim().toLowerCase();
+      // Passcodes accepted for author verification
+      const validCodes = ['0414', 'author', 'hdw', '홍동우', '2026'];
+      if (validCodes.includes(val)) {
+        isAuthorUnlocked = true;
+        writeStorage('archive_author_unlocked', 'true', true);
+        closeAuthorUnlockModal();
+        showToast('🔓 저자 인증이 완료되어 전체 기고문 원문이 해제되었습니다.');
+        if (currentDocId) renderDocument(currentDocId);
+        renderSidebarMenus(document.getElementById('sidebar-filter-input').value);
+      } else {
+        err.classList.remove('hidden');
+      }
+    }
+
+    function lockAuthorMode() {
+      isAuthorUnlocked = false;
+      removeStorage('archive_author_unlocked', true);
+      removeStorage('archive_author_unlocked');
+      showToast('🔒 유료 매체 저작권 보호 모드가 다시 활성화되었습니다.');
+      if (currentDocId) renderDocument(currentDocId);
+      renderSidebarMenus(document.getElementById('sidebar-filter-input').value);
+    }
+
+    function renderMetadataBox(doc) {
+      const box = document.getElementById('doc-meta-box');
+      const scriptures = Array.isArray(doc.scripture) ? doc.scripture : (doc.scripture ? [doc.scripture] : []);
+      const theologians = Array.isArray(doc.theologians) ? doc.theologians : [];
+      const concepts = Array.isArray(doc.concepts) ? doc.concepts : [];
+      const tags = Array.isArray(doc.tags) ? doc.tags : [];
+      const hasMeta = scriptures.length > 0 || theologians.length > 0 || concepts.length > 0 || tags.length > 0 || doc.audience || doc.period;
+
+      if (!hasMeta) {
+        box.classList.add('hidden');
+        return;
+      }
+
+      box.classList.remove('hidden');
+      let html = `<div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">`;
+
+      if (scriptures.length > 0) {
+        html += `
+          <div class="flex items-start gap-2">
+            <span class="font-semibold text-slate-400 shrink-0 w-20 flex items-center gap-1"><i data-lucide="book" class="w-3.5 h-3.5 text-amber-500"></i> 본문</span>
+            <div class="flex flex-wrap gap-1">
+              ${scriptures.map(s => `<span class="px-2 py-0.5 rounded bg-amber-500/10 text-amber-700 dark:text-amber-300 font-medium">${escapeHtml(s)}</span>`).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (doc.audience || doc.role || doc.period) {
+        const infoParts = [doc.period, doc.role, doc.audience, doc.pastoral_context].filter(Boolean);
+        html += `
+          <div class="flex items-start gap-2">
+            <span class="font-semibold text-slate-400 shrink-0 w-20 flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-blue-500"></i> 맥락</span>
+            <div class="text-slate-700 dark:text-slate-300 font-medium">${escapeHtml(infoParts.join(' · '))}</div>
+          </div>
+        `;
+      }
+
+      if (theologians.length > 0) {
+        html += `
+          <div class="flex items-start gap-2 sm:col-span-2">
+            <span class="font-semibold text-slate-400 shrink-0 w-20 flex items-center gap-1"><i data-lucide="users" class="w-3.5 h-3.5 text-purple-500"></i> 신학자</span>
+            <div class="flex flex-wrap gap-1.5">
+              ${theologians.map(t => formatMetaWikiLink(t)).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (concepts.length > 0) {
+        html += `
+          <div class="flex items-start gap-2 sm:col-span-2">
+            <span class="font-semibold text-slate-400 shrink-0 w-20 flex items-center gap-1"><i data-lucide="lightbulb" class="w-3.5 h-3.5 text-mint-500"></i> 핵심 개념</span>
+            <div class="flex flex-wrap gap-1.5">
+              ${concepts.map(c => formatMetaWikiLink(c)).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      if (tags.length > 0) {
+        html += `
+          <div class="flex items-start gap-2 sm:col-span-2 pt-1 border-t border-slate-100 dark:border-slate-800/70">
+            <span class="font-semibold text-slate-400 shrink-0 w-20 flex items-center gap-1"><i data-lucide="tags" class="w-3.5 h-3.5 text-slate-400"></i> 태그</span>
+            <div class="flex flex-wrap gap-1">
+              ${tags.map(tag => `<button onclick="triggerTagSearch('${escapeJs(tag)}')" class="px-2 py-0.5 rounded-md bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 hover:text-brand-500 transition">#${escapeHtml(tag)}</button>`).join('')}
+            </div>
+          </div>
+        `;
+      }
+
+      html += `</div>`;
+      box.innerHTML = html;
+    }
+
+    function formatMetaWikiLink(rawStr) {
+      const clean = String(rawStr).replace(/^\[\[|\]\]$/g, '').split('|')[0].trim();
+      const targetId = resolveWikiLinkTarget(clean);
+      const label = clean.replace(/_/g, ' ');
+      if (targetId) {
+        return `<a href="#${encodeURIComponent(targetId)}" data-wikilink="${escapeAttr(targetId)}" onclick="openDoc('${escapeJs(targetId)}'); return false;" class="wikilink text-xs">${escapeHtml(label)}</a>`;
+      }
+      return `<span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">${escapeHtml(label)}</span>`;
+    }
+
+    // Markdown + Obsidian Syntax Parser
+    function parseObsidianMarkdown(mdText) {
+      if (!mdText) return '';
+
+      // 1. Extract code blocks temporarily so we don't parse wikilinks inside code/mermaid
+      const codeBlocks = [];
+      let processed = mdText.replace(/```(\w*)\n([\s\S]*?)```/g, (match, lang, code) => {
+        const idx = codeBlocks.length;
+        if (lang.toLowerCase() === 'mermaid') {
+          codeBlocks.push(`<div class="mermaid my-6 p-4 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 flex justify-center overflow-x-auto">${escapeHtml(code)}</div>`);
+        } else {
+          codeBlocks.push(`<pre><code class="language-${escapeAttr(lang)}">${escapeHtml(code)}</code></pre>`);
+        }
+        return `@@CODEBLOCK_${idx}@@`;
+      });
+
+      // 2. Convert Obsidian WikiLinks: [[Target|Alias]] or [[Target]]
+      processed = processed.replace(/\[\[([^\]|#]+)(?:#[^\]|]*)?(?:\\?\|([^\]]+))?\]\]/g, (match, target, alias) => {
+        const cleanTarget = target.replace(/\\$/g, '').trim();
+        const display = (alias ? alias.trim() : cleanTarget.split('/').pop().replace(/_/g, ' '));
+        const resolvedId = resolveWikiLinkTarget(cleanTarget);
+        if (resolvedId) {
+          return `<a href="#${encodeURIComponent(resolvedId)}" data-wikilink="${escapeAttr(resolvedId)}" onclick="openDoc('${escapeJs(resolvedId)}'); return false;" class="wikilink"><i data-lucide="file-text" class="w-3 h-3 shrink-0"></i><span>${escapeHtml(display)}</span></a>`;
+        } else {
+          return `<span class="wikilink wikilink-unresolved" title="아직 생성되지 않은 노트">${escapeHtml(display)}</span>`;
+        }
+      });
+
+      // 3. Parse Markdown using Marked.js
+      let html = window.marked && typeof marked.parse === 'function'
+        ? marked.parse(processed)
+        : `<pre class="whitespace-pre-wrap text-sm">${escapeHtml(processed)}</pre>`;
+
+      // 4. Transform Obsidian Callouts inside Blockquotes: > [!quote] Title + 📋 원클릭 인용 복사 버튼
+      html = html.replace(/<blockquote>\s*<p>\[!(\w+)\]\s*([^\n<]*)(?:<br>|\n)?([\s\S]*?)<\/blockquote>/gi, (match, type, title, rest) => {
+        const calloutStyles = {
+          quote: { border: 'border-brand-500/40 bg-brand-500/5 dark:bg-brand-500/10', icon: 'quote', color: 'text-brand-600 dark:text-brand-400', defaultTitle: '원문 발췌' },
+          abstract: { border: 'border-mint-500/40 bg-mint-500/5 dark:bg-mint-500/10', icon: 'sparkles', color: 'text-mint-600 dark:text-mint-400', defaultTitle: '핵심 테제' },
+          tip: { border: 'border-emerald-500/40 bg-emerald-500/5 dark:bg-emerald-500/10', icon: 'lightbulb', color: 'text-emerald-600 dark:text-emerald-400', defaultTitle: '안내' },
+          question: { border: 'border-amber-500/40 bg-amber-500/5 dark:bg-amber-500/10', icon: 'help-circle', color: 'text-amber-600 dark:text-amber-400', defaultTitle: '핵심 질문' },
+          warning: { border: 'border-rose-500/40 bg-rose-500/5 dark:bg-rose-500/10', icon: 'alert-circle', color: 'text-rose-600 dark:text-rose-400', defaultTitle: '주의' }
+        };
+        const st = calloutStyles[type.toLowerCase()] || calloutStyles.quote;
+        const headerTitle = (title && title.trim()) ? title.trim() : st.defaultTitle;
+
+        // Strip HTML tags to create clean plain text for One-Click Quote Copy
+        const calloutContent = String(rest || '').replace(/<\/p>\s*$/i, '').trim();
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = calloutContent;
+        const plainQuote = (tempDiv.textContent || tempDiv.innerText || '').trim();
+        const docTitle = (currentDocId && DB.docs[currentDocId]) ? DB.docs[currentDocId].title : '';
+        const quoteIdx = calloutQuotesStore.length;
+        calloutQuotesStore.push(`${plainQuote}\n— 홍동우 목사, 「${docTitle}」 (${headerTitle})`);
+
+        return `
+          <div class="callout-card ${st.border} group">
+            <div class="flex items-center justify-between gap-2 mb-2.5">
+              <div class="flex items-center gap-2 font-bold text-xs uppercase tracking-wider ${st.color}">
+                <i data-lucide="${st.icon}" class="w-4 h-4"></i>
+                <span>${escapeHtml(headerTitle)}</span>
+              </div>
+              <button onclick="copyCalloutQuote(${quoteIdx})" class="inline-flex items-center gap-1 px-2 py-1 rounded-lg text-[11px] font-semibold bg-white/80 dark:bg-slate-800/80 hover:bg-brand-600 hover:text-white text-slate-600 dark:text-slate-300 border border-slate-200/80 dark:border-slate-700 transition shadow-sm" title="이 인용구를 출처와 함께 클립보드에 복사">
+                <span>📋 인용 복사</span>
+              </button>
+            </div>
+            <div class="text-sm sm:text-[15.5px] leading-relaxed space-y-2 text-slate-700 dark:text-slate-200">
+              ${calloutContent}
+            </div>
+          </div>
+        `;
+      });
+
+      // 5. Restore Code Blocks
+      html = html.replace(/@@CODEBLOCK_(\d+)@@/g, (_, idx) => codeBlocks[Number(idx)]);
+
+      return html;
+    }
+
+    function copyCalloutQuote(quoteIdx) {
+      const text = calloutQuotesStore[quoteIdx];
+      if (!text) return;
+      copyTextToClipboard(text, '📋 콜아웃 인용구와 출처가 복사되었습니다.');
+    }
+
+    // Build Dynamic Right-Hand Table of Contents
+    function buildTableOfContents() {
+      const bodyEl = document.getElementById('doc-body');
+      const tocWrapper = document.getElementById('toc-wrapper');
+      const tocList = document.getElementById('toc-list');
+      const headings = bodyEl.querySelectorAll('h2, h3');
+
+      if (headings.length < 2) {
+        tocWrapper.classList.add('hidden');
+        tocList.innerHTML = '';
+        return;
+      }
+
+      tocWrapper.classList.remove('hidden');
+      let tocHtml = '';
+      headings.forEach((h, idx) => {
+        const id = `section-heading-${idx}`;
+        h.id = id;
+        const isH3 = h.tagName === 'H3';
+        const text = h.textContent.replace(/^#+\s*/, '');
+        tocHtml += `
+          <a href="#${id}" onclick="scrollToHeading(event, '${id}')" data-target="${id}" class="toc-item block py-1.5 ${isH3 ? 'pl-6 text-[11px]' : 'pl-3 font-medium'} border-l-2 border-transparent text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition truncate">
+            ${escapeHtml(text)}
+          </a>
+        `;
+      });
+      tocList.innerHTML = tocHtml;
+    }
+
+    function scrollToHeading(e, id) {
+      e.preventDefault();
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+
+    // Render Mermaid Diagrams
+    async function renderMermaidDiagrams() {
+      if (!window.mermaid) return;
+      const nodes = document.querySelectorAll('#doc-body .mermaid');
+      if (nodes.length > 0) {
+        try {
+          await mermaid.run({ nodes });
+        } catch (err) {
+          console.warn('Mermaid rendering warning:', err);
+        }
+      }
+    }
+
+    // Render Backlinks Section
+    function renderBacklinks(docId) {
+      const section = document.getElementById('doc-backlinks-section');
+      const grid = document.getElementById('doc-backlinks-grid');
+      const linksSet = backlinksMap[docId];
+
+      if (!linksSet || linksSet.size === 0) {
+        section.classList.add('hidden');
+        return;
+      }
+
+      section.classList.remove('hidden');
+      const linkedDocs = Array.from(linksSet).map(id => DB.docs[id]).filter(Boolean);
+      grid.innerHTML = linkedDocs.slice(0, 12).map(d => `
+        <div onclick="openDoc('${escapeJs(d.id)}')" class="p-3.5 rounded-xl border border-slate-200/80 dark:border-slate-800 bg-white dark:bg-slate-900/40 hover:border-brand-500 cursor-pointer transition space-y-1">
+          <div class="flex items-center justify-between text-[10px] font-mono text-slate-400">
+            <span>${d.section.toUpperCase()} · ${d.category}</span>
+            <span>${d.date || ''}</span>
+          </div>
+          <div class="text-xs font-bold text-slate-800 dark:text-slate-200 truncate">${escapeHtml(d.title)}</div>
+        </div>
+      `).join('');
+    }
+
+    // Render Prev / Next Document Buttons
+    function renderPrevNextNav(docId) {
+      const container = document.getElementById('doc-prev-next');
+      const currentDoc = DB.docs[docId];
+      if (!currentDoc) return;
+
+      const sameCategoryDocs = Object.values(DB.docs).filter(
+        d => d.section === currentDoc.section && d.category === currentDoc.category
+      );
+      const idx = sameCategoryDocs.findIndex(d => d.id === docId);
+      const prevDoc = idx > 0 ? sameCategoryDocs[idx - 1] : null;
+      const nextDoc = idx >= 0 && idx < sameCategoryDocs.length - 1 ? sameCategoryDocs[idx + 1] : null;
+
+      container.innerHTML = `
+        <div>
+          ${prevDoc ? `
+            <button onclick="openDoc('${escapeJs(prevDoc.id)}')" class="w-full text-left p-4 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 transition group">
+              <div class="text-[11px] text-slate-400 flex items-center gap-1 mb-1">
+                <i data-lucide="arrow-left" class="w-3.5 h-3.5 group-hover:-translate-x-0.5 transition-transform"></i>
+                <span>이전 문서</span>
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 truncate">${escapeHtml(prevDoc.title)}</div>
+            </button>
+          ` : ''}
+        </div>
+        <div>
+          ${nextDoc ? `
+            <button onclick="openDoc('${escapeJs(nextDoc.id)}')" class="w-full text-right p-4 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-brand-500 dark:hover:border-brand-500 transition group">
+              <div class="text-[11px] text-slate-400 flex items-center justify-end gap-1 mb-1">
+                <span>다음 문서</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform"></i>
+              </div>
+              <div class="text-xs sm:text-sm font-bold text-slate-800 dark:text-slate-200 truncate">${escapeHtml(nextDoc.title)}</div>
+            </button>
+          ` : ''}
+        </div>
+      `;
+    }
+
+    // Window Scroll: Reading Progress & TOC Active Spy
+    function handleWindowScroll() {
+      const docEl = document.documentElement;
+      const scrollTop = docEl.scrollTop || document.body.scrollTop;
+      const scrollHeight = docEl.scrollHeight - docEl.clientHeight;
+      const pct = scrollHeight > 0 ? Math.min(100, Math.max(0, (scrollTop / scrollHeight) * 100)) : 0;
+      const roundedPct = Math.round(pct);
+
+      const topBar = document.getElementById('reading-progress');
+      if (topBar) topBar.style.width = pct + '%';
+
+      const rightPct = document.getElementById('right-progress-pct');
+      const rightBar = document.getElementById('right-progress-bar');
+      if (rightPct) rightPct.textContent = roundedPct + '%';
+      if (rightBar) rightBar.style.width = pct + '%';
+
+      // TOC Spy
+      if (!currentDocId) return;
+      const headings = document.querySelectorAll('#doc-body h2, #doc-body h3');
+      let activeId = null;
+      for (const h of headings) {
+        const rect = h.getBoundingClientRect();
+        if (rect.top <= 120) {
+          activeId = h.id;
+        } else {
+          break;
+        }
+      }
+      document.querySelectorAll('.toc-item').forEach(item => {
+        item.classList.toggle('active', item.getAttribute('data-target') === activeId);
+      });
+    }
+
+    // WikiLink Hover Preview Popover
+    function bindWikiLinkHoverEvents() {
+      const links = document.querySelectorAll('[data-wikilink]');
+      links.forEach(link => {
+        link.addEventListener('mouseenter', (e) => {
+          const targetId = link.getAttribute('data-wikilink');
+          showHoverPreview(targetId, e);
+        });
+        link.addEventListener('mouseleave', hideHoverPreview);
+      });
+    }
+
+    function showHoverPreview(targetId, event) {
+      const targetDoc = DB.docs[targetId];
+      if (!targetDoc) return;
+
+      const card = document.getElementById('hover-preview-card');
+      document.getElementById('hover-preview-badge').textContent = `${targetDoc.section.toUpperCase()} · ${targetDoc.category}`;
+      document.getElementById('hover-preview-title').textContent = targetDoc.title;
+      
+      const cleanExcerpt = (targetDoc.subject || targetDoc.body || '')
+        .replace(/^#+\s+.*$/gm, '')
+        .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, '$2$1')
+        .replace(/[*>`#-]/g, '')
+        .trim()
+        .slice(0, 180);
+      document.getElementById('hover-preview-excerpt').textContent = cleanExcerpt + '...';
+
+      card.classList.remove('hidden');
+      const rect = event.target.getBoundingClientRect();
+      const left = Math.min(window.innerWidth - 390, Math.max(12, rect.left));
+      const top = rect.bottom + 10 + 180 > window.innerHeight ? Math.max(12, rect.top - 170) : rect.bottom + 8;
+
+      card.style.left = `${left}px`;
+      card.style.top = `${top}px`;
+    }
+
+    function hideHoverPreview() {
+      document.getElementById('hover-preview-card').classList.add('hidden');
+    }
+
+    // Global Command Palette Search Modal
+    function openSearchModal() {
+      const modal = document.getElementById('search-modal');
+      modal.classList.remove('hidden');
+      const input = document.getElementById('global-search-input');
+      input.focus();
+      handleGlobalSearch(input.value);
+    }
+
+    function closeSearchModal() {
+      document.getElementById('search-modal').classList.add('hidden');
+    }
+
+    function triggerTagSearch(tag) {
+      openSearchModal();
+      const input = document.getElementById('global-search-input');
+      input.value = tag;
+      handleGlobalSearch(tag);
+    }
+
+    function setSearchFilter(filter) {
+      currentSearchFilter = filter;
+      document.querySelectorAll('.search-tab-btn').forEach(btn => {
+        const isCurrent = btn.getAttribute('data-sfilter') === filter;
+        btn.className = isCurrent
+          ? 'search-tab-btn px-2.5 py-1 rounded-lg font-medium bg-brand-600 text-white'
+          : 'search-tab-btn px-2.5 py-1 rounded-lg font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-200/60 dark:hover:bg-slate-800';
+      });
+      handleGlobalSearch(document.getElementById('global-search-input').value);
+    }
+
+    function handleGlobalSearch(query) {
+      const q = query.trim().toLowerCase();
+      const allDocs = Object.values(DB.docs);
+
+      const filtered = allDocs.filter(doc => {
+        if (currentSearchFilter === 'raw' && doc.section !== 'raw') return false;
+        if (currentSearchFilter === 'wiki' && doc.section !== 'wiki') return false;
+        if (currentSearchFilter === 'concepts' && doc.category !== 'concepts') return false;
+        if (currentSearchFilter === 'theologians' && doc.category !== 'theologians') return false;
+
+        if (!q) return true;
+        const inTitle = (doc.title || '').toLowerCase().includes(q);
+        const inSubject = (doc.subject || '').toLowerCase().includes(q);
+        const scriptureText = Array.isArray(doc.scripture) ? doc.scripture.join(' ') : String(doc.scripture || '');
+        const tagsText = Array.isArray(doc.tags) ? doc.tags.join(' ') : String(doc.tags || '');
+        const inScripture = scriptureText.toLowerCase().includes(q);
+        const inTags = tagsText.toLowerCase().includes(q);
+        const inBody = (doc.body || '').toLowerCase().includes(q);
+        return inTitle || inSubject || inScripture || inTags || inBody;
+      });
+
+      document.getElementById('search-result-count').textContent = `${filtered.length}개 문서 검색됨`;
+      const listEl = document.getElementById('search-results-list');
+
+      if (filtered.length === 0) {
+        listEl.innerHTML = `<div class="py-12 text-center text-sm text-slate-400">일치하는 문서가 없습니다.</div>`;
+        return;
+      }
+
+      listEl.innerHTML = filtered.slice(0, 40).map(doc => {
+        const isRaw = doc.section === 'raw';
+        const badge = isRaw ? '📖 RAW' : `🧠 ${String(doc.category || 'WIKI').toUpperCase()}`;
+        let snippet = doc.subject || '';
+        if (q && doc.body) {
+          const idx = doc.body.toLowerCase().indexOf(q);
+          if (idx !== -1) {
+            const start = Math.max(0, idx - 35);
+            snippet = '...' + doc.body.slice(start, idx + 85).replace(/\n+/g, ' ') + '...';
+          }
+        }
+        return `
+          <button onclick="openDoc('${escapeJs(doc.id)}'); closeSearchModal();" class="w-full text-left p-3 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800/70 transition flex items-start justify-between gap-3 group">
+            <div class="min-w-0 space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="px-1.5 py-0.5 text-[10px] font-bold rounded ${isRaw ? 'bg-amber-500/10 text-amber-600 dark:text-amber-400' : 'bg-brand-500/10 text-brand-600 dark:text-brand-400'}">${badge}</span>
+                ${doc.date ? `<span class="text-[11px] font-mono text-slate-400">${escapeHtml(doc.date)}</span>` : ''}
+                ${(doc.scripture && doc.scripture.length) ? `<span class="text-[11px] text-slate-400 truncate">${escapeHtml(doc.scripture[0])}</span>` : ''}
+              </div>
+              <div class="text-sm font-bold text-slate-900 dark:text-white group-hover:text-brand-500 truncate">${escapeHtml(doc.title)}</div>
+              ${snippet ? `<div class="text-xs text-slate-500 dark:text-slate-400 line-clamp-1">${escapeHtml(snippet)}</div>` : ''}
+            </div>
+            <i data-lucide="corner-down-left" class="w-4 h-4 text-slate-300 group-hover:text-brand-500 shrink-0 mt-2"></i>
+          </button>
+        `;
+      }).join('');
+
+      if (window.lucide) lucide.createIcons();
+    }
+
+    // Mobile Sidebar Drawer Controls
+    function toggleMobileSidebar() {
+      const sb = document.getElementById('left-sidebar');
+      const bd = document.getElementById('sidebar-backdrop');
+      const isHidden = sb.classList.contains('-translate-x-full');
+      sb.classList.toggle('-translate-x-full', !isHidden);
+      bd.classList.toggle('hidden', !isHidden);
+    }
+
+    function closeMobileSidebar() {
+      document.getElementById('left-sidebar').classList.add('-translate-x-full');
+      document.getElementById('sidebar-backdrop').classList.add('hidden');
+    }
+
+    // Copy Link Helper
+    function copyCurrentDocLink() {
+      copyTextToClipboard(window.location.href, '현재 문서의 링크가 복사되었습니다.');
+      const el = document.getElementById('copy-link-text');
+      if (el) {
+        el.textContent = '복사 완료!';
+        setTimeout(() => { el.textContent = '링크 복사'; }, 1800);
+      }
+    }
+
+    // String Escaping Helpers
+    function escapeHtml(str) {
+      return String(str || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+    function escapeAttr(str) {
+      return escapeHtml(str).replace(/'/g, '&#39;');
+    }
+    function escapeJs(str) {
+      return String(str || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    }
+  </script>
+</body>
+</html>
